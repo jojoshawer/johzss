@@ -56,34 +56,56 @@
 
   <div class="container">
     <div class="row justify-content-center">
-    <div class="col-md-5">
-     <div class="card">
-       <h2 class="card-title text-center">Register <a href="http://opensnippets.com">open snippets</a></h2>
-        <div class="card-body py-md-4">
-         <form _lpchecked="1">
-            <div class="form-group">
-               <input type="text" class="form-control" id="name" placeholder="Name">
-          </div>
-          <div class="form-group">
-               <input type="email" class="form-control" id="email" placeholder="Email">
-                              </div>
-                              
-                            
-     <div class="form-group">
-       <input type="password" class="form-control" id="password" placeholder="Password">
-     </div>
-     <div class="form-group">
-        <input type="password" class="form-control" id="confirm-password" placeholder="confirm-password">
-     </div>
-     <div class="d-flex flex-row align-items-center justify-content-between">
-                                  <button class="btn btn-primary">Create Account</button>
+        <div class="col-md-5">
+            <div class="card">
+                <h2 class="card-title text-center">Register <a href="http://opensnippets.com">open snippets</a></h2>
+                <div class="card-body py-md-4">
+                    <form action="register.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="organization" name="organization" placeholder="Organization Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization-type">Organization Type</label>
+                            <select class="form-control" id="organization-type" name="organization-type" required>
+                                <option value="">Select Organization Type</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Non-Profit">Non-Profit</option>
+                                <option value="Government">Government</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">- Upload required documents for verification</label>
+                            <input type="file" class="form-control-file" id="file" name="file" required>
+                        </div>
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <button type="submit" class="btn btn-primary">Create Account</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-         </form>
-       </div>
+        </div>
     </div>
-  </div>
-  </div>
-  </div>
+</div>
+
 
 </body>
 
