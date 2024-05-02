@@ -111,26 +111,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 
-<script>
-  function setupLogin() {
-      document.getElementById("loginForm").addEventListener("submit", function(event) {
-          var username = document.getElementById("username").value;
-          var password = document.getElementById("password").value;
 
-          if (username === "jannashawer" && password === "123") {
-              console.log("Redirecting to admin.html"); 
-              window.location.href = "admin.html";
-          } else {
-              event.preventDefault();
-              alert("Invalid username or password");
-          }
-      });
-  }
-
-  document.addEventListener("DOMContentLoaded", function() {
-      setupLogin();
-  });
-</script>
 
 </body>
 </html>
