@@ -2,65 +2,254 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Charity</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+  
+    /* Custom styles */
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #343a40;
+      color: #fff;
+      padding: 15px 0;
+    }
+
+    .my-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .menu-items ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-items ul li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .menu-items ul li:last-child {
+      margin-right: 0;
+    }
+
+    .container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .login-wrap {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+      font-size: 36px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+
+    .icon span {
+      line-height: 80px;
+    }
+
+    .heading-section h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .form-control {
+      border-radius: 20px;
+    }
+
+    .checkbox-wrap {
+      position: relative;
+      padding-left: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      user-select: none;
+    }
+
+    .checkbox-wrap input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+
+    .checkbox-wrap input:checked~.checkmark:after {
+      content: "";
+      position: absolute;
+      display: block;
+      border: 2px solid #007bff;
+      border-radius: 50%;
+      height: 12px;
+      width: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .checkbox-wrap:hover input~.checkmark {
+      background-color: #ccc;
+    }
+
+    .submit {
+      border-radius: 20px;
+    }
+
+  </style>
 </head>
+
 <body>
 
-    <!-- ======================header started====================== -->
-    <header>
-        <div class="my-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="nav-items">
-                        <div class="menu-toggle"></div>
-                        <div class="logo">
-                            <img src="assets/images/logo.png">
-                        </div>
-                        <div class="menu-items">
-                            <div class="menu">
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">admin</a></li>
-                                    <li><a href="organization.html">organization</a></li>
-                                    <li><a href="donor.html">donor</a></li>
-                                    <li><a href="login.html">login</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <!-- ======================header started====================== -->
+
+  <header>
+    <div class="my-nav">
+      <div class="container">
+        <div class="row">
+          <div class="nav-items">
+            <div class="menu-toggle"></div>
+            <div class="logo">
+              <img src="assets/images/logo.png">
             </div>
-        </div>
-    </header>
-
-   <section class="bg-02-a">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="_head_01">
-                        <h2>admin</h2>
-                        <p>Home<i class="fas fa-angle-right"></i><span>admin</span></p>
-                    </div>
-                </div>
+            <div class="menu-items">
+              <div class="menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="organization.html">Organization</a></li>
+                  <li><a href="donor.html">Donor</a></li>
+                  <li><a href="admin.html">admin</a></li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </header>
 
-    
- <!-- ====================== started====================== -->
+  <section class="bg-02-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="_head_01">
+            <h2>admin</h2>
+            <p>Home <i class="fas fa-angle-right"></i><span>admin</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
- 
-   
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+          <h2 class="heading-section">admin</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="login-wrap p-4 p-md-5">
+            <div class="icon d-flex align-items-center justify-content-center">
+              <span class="fa fa-user-o"></span>
+            </div>
+            <h3 class="text-center mb-4">Admin Login Form</h3>
+            <form id="loginForm">
+              <div class="form-group">
+                <input type="text" class="form-control rounded-left" id="username" placeholder="Username" required>
+              </div>
+              <div class="form-group d-flex">
+                <input type="password" class="form-control rounded-left" id="password" placeholder="Password" required>
+              </div>
+              <div class="form-group d-md-flex">
+                <div class="w-50">
+                  <label class="checkbox-wrap checkbox-primary">Remember Me
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="w-50 text-md-right">
+                  <a href="#">Forgot Password</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get username and password values
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Check if username and password match
+        if (username === "janna" && password === "123") {
+          // If authenticated, redirect to admin2.html
+          window.location.href = "admin2.html";
+        } else {
+          // If not authenticated, show an alert
+          alert("Invalid username or password");
+        }
+      });
+    });
+  </script>
+
+
 </body>
 
-
-<script src="assets/js/jquery-3.2.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/script.js"></script>
 </html>
