@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Charity</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Additional styles for the sidebar */
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+        }
+
+        .change-password-btn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======================header started====================== -->
+    <header>
+        <div class="my-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="nav-items">
+                        <div class="menu-toggle"></div>
+                        <div class="logo">
+                            <img src="assets/images/logo.png">
+                        </div>
+                        <div class="menu-items">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about-us.html">admin</a></li>
+                                    <li><a href="organization.html">organization</a></li>
+                                    <li><a href="donor.html">donor</a></li>
+                                    <li><a href="admin.html">admin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-02-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="_head_01">
+                        <h2>admin</h2>
+                        <p>Home<i class="fas fa-angle-right"></i><span>admin</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== Pending Donation Requests Section started====================== -->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Pending Donation Requests</h2>
+                    <div id="pendingRequests"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ====================== Donation Requests Data (Example) ====================== -->
+    <script>
+        // Example data for pending donation requests
+        var pendingRequestsData = [
+            { id: 1, itemName: "Medication", quantity: 10 },
+            { id: 2, itemName: "Clothes", quantity: 20 },
+            { id: 3, itemName: "Food", quantity: 30 }
+            // Add more data as needed
+        ];
+
+        // Function to display pending donation requests
+        function displayPendingRequests() {
+            var pendingRequestsHtml = "";
+            pendingRequestsData.forEach(function(request) {
+                pendingRequestsHtml += `
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">${request.itemName}</h5>
+                            <p class="card-text">Quantity: ${request.quantity}</p>
+                            <button class="btn btn-success mr-2" onclick="approveRequest(${request.id})">Approve</button>
+                            <button class="btn btn-danger" onclick="rejectRequest(${request.id})">Reject</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById("pendingRequests").innerHTML = pendingRequestsHtml;
+        }
+
+        // Function to approve a request
+        function approveRequest(requestId) {
+            // Find the index of the request in the array
+            var index = pendingRequestsData.findIndex(function(request) {
+                return request.id === requestId;
+            });
+            // Remove the request from the array
+            if (index !== -1) {
+                pendingRequestsData.splice(index, 1);
+                // Update the displayed list
+                displayPendingRequests();
+            }
+        }
+
+        // Function to reject a request
+        function rejectRequest(requestId) {
+            // Find the index of the request in the array
+            var index = pendingRequestsData.findIndex(function(request) {
+                return request.id === requestId;
+            });
+            // Remove the request from the array
+            if (index !== -1) {
+                pendingRequestsData.splice(index, 1);
+                // Update the displayed list
+                displayPendingRequests();
+            }
+        }
+
+        // Display pending donation requests when the page loads
+        window.onload = displayPendingRequests;
+    </script>
+
+<!-- ====================== change_password Requests Section started====================== -->
+    <div class="change-password-btn">
+        <button type="button" class="btn btn-primary" onclick="openChangePasswordForm()">Change Password</button>
+    </div>
+
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Change Password</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form id="changePasswordForm" method="post" action="change_password.php">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script>
+        // Function to open the change password modal
+        function openChangePasswordForm() {
+            $('#changePasswordModal').modal('show');
+        }
+        
+    </script>
+    <script>
+        // Function to update the password in localStorage
+        function updatePassword(password) {
+            localStorage.setItem('adminPassword', password);
+        }
+
+        // Example function to change the password
+        function changePassword(newPassword) {
+            // Your logic to change the password
+            updatePassword(newPassword);
+        }
+    </script>
+</body>
+
+</html>
