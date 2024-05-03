@@ -8,6 +8,82 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Custom styles */
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #343a40;
+      color: #fff;
+      padding: 15px 0;
+    }
+
+    .my-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .menu-items ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-items ul li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .menu-items ul li:last-child {
+      margin-right: 0;
+    }
+
+    .container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card-body {
+      padding: 30px;
+    }
+
+    .form-control {
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      border-radius: 20px;
+      padding: 12px 30px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -29,7 +105,7 @@
                   <li><a href="index.html">Home</a></li>
                   <li><a href="organization.html">organization</a></li>
                   <li><a href="donor.html">donor</a></li>
-                  <li><a href="login.html">login</a></li>
+                  <li><a href="admin.html">admin</a></li>
                 </ul>
               </div>
             </div>
@@ -58,7 +134,7 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="card">
-                <h2 class="card-title text-center">Register <a href="http://opensnippets.com">open snippets</a></h2>
+                <h2 class="card-title text-center"> Register form for Organization Representative</a></h2>
                 <div class="card-body py-md-4">
                     <form action="register.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
