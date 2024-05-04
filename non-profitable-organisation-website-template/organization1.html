@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* Style for donation details display */
+    .donation-details {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .donation-details p {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .donation-details p span {
+      font-weight: bold;
+    }
+
+    .btn-update {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================header started====================== -->
+
+  <header>
+    <div class="my-nav">
+      <div class="container">
+        <div class="row">
+          <div class="nav-items">
+            <div class="menu-toggle"></div>
+            <div class="logo">
+              <img src="assets/images/logo.png">
+            </div>
+            <div class="menu-items">
+              <div class="menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="organization.html">organization</a></li>
+                  <li><a href="donor.html">donor</a></li>
+                  <li><a href="admin.html">admin</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-02-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="_head_01">
+            <h2>donor</h2>
+            <p>Home<i class="fas fa-angle-right"></i><span>donor</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== donor1 Section started====================== -->
+  <div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <a href="organization2.html" class="btn btn-secondary btn-block">Create Donation Post</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Donation Details Display -->
+  <div id="donation-container" class="container">
+    <!-- Donation details will be dynamically added here -->
+  </div>
+
+  <script>
+    var storedFormData = localStorage.getItem('formData');
+
+    // Check if form data exists
+    if (storedFormData) {
+      // Parse the stored form data
+      var formData = JSON.parse(storedFormData);
+
+      // Display the form data on the page
+      displayDonation(formData);
+    }
+
+    // Function to display donation
+    function displayDonation(formData) {
+      // Create a new donation details section
+      var donationDetails = document.createElement('div');
+      donationDetails.classList.add('donation-details');
+
+      // Set inner HTML for the donation details section
+      donationDetails.innerHTML = `
+        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+        <p><span>Item Description:</span> ${formData.itemDescription}</p>
+        <p><span>Quantity:</span> ${formData.quantity}</p>
+        <button class="btn btn-primary btn-update" onclick="editDonation(this)">Edit</button>
+        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+      `;
+
+      // Append the new donation details section to the container
+      document.getElementById('donation-container').appendChild(donationDetails);
+    }
+
+    // Function to edit donation
+    function editDonation(button) {
+      var donationDetails = button.parentNode;
+      var editedItemCategory = prompt("Enter new item category:", donationDetails.querySelector('p:nth-child(1) span').innerText);
+      var editedItemDescription = prompt("Enter new item description:", donationDetails.querySelector('p:nth-child(2) span').innerText);
+      var editedQuantity = prompt("Enter new quantity:", donationDetails.querySelector('p:nth-child(3) span').innerText);
+
+      // Update the donation details
+      donationDetails.querySelector('p:nth-child(1) span').innerText = editedItemCategory;
+      donationDetails.querySelector('p:nth-child(2) span').innerText = editedItemDescription;
+      donationDetails.querySelector('p:nth-child(3) span').innerText = editedQuantity;
+
+      // Update the stored form data
+      formData.itemCategory = editedItemCategory;
+      formData.itemDescription = editedItemDescription;
+      formData.quantity = editedQuantity;
+      localStorage.setItem('formData', JSON.stringify(formData));
+    }
+
+    // Function to delete donation
+    function deleteDonation(button) {
+      var confirmDelete = confirm("Are you sure you want to delete this donation?");
+      if (confirmDelete) {
+        var donationDetails = button.parentNode;
+        // Remove the donation details section from the container
+        donationDetails.parentNode.removeChild(donationDetails);
+        // Clear the stored form data
+        localStorage.removeItem('formData');
+      }
+    }
+  </script>
+
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>

@@ -201,17 +201,6 @@
               <div class="form-group d-flex">
                 <input type="password" class="form-control rounded-left" id="password" placeholder="Password" required>
               </div>
-              <div class="form-group d-md-flex">
-                <div class="w-50">
-                  <label class="checkbox-wrap checkbox-primary">Remember Me
-                    <input type="checkbox" checked>
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="w-50 text-md-right">
-                  <a href="#">Forgot Password</a>
-                </div>
-              </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Submit</button>
               </div>
@@ -232,22 +221,32 @@
     document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("loginForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent default form submission
-
+  
         // Get username and password values
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-
-        // Check if username and password match
-        if (username === "janna" && password === "123") {
-          // If authenticated, redirect to admin2.html
-          window.location.href = "admin2.html";
+  
+        // Check if username is correct
+        if (username === "janna") {
+          // Check if password is correct
+          if (password === "123") {
+            // If both username and password are correct, redirect to admin2.html
+            window.location.href = "admin2.html";
+          } else {
+            // If only password is incorrect, show an alert for password
+            alert("Incorrect password");
+          }
         } else {
-          // If not authenticated, show an alert
-          alert("Invalid username or password");
+          // If username is incorrect, show an alert for username
+          alert("Incorrect username");
         }
       });
     });
-  </script>
+    
+</script>
+
+  
+  
 
 
 </body>

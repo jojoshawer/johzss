@@ -40,62 +40,73 @@
   </header>
 
   <section class="bg-02-a">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <div class="_head_01">
-                      <h2>donor</h2>
-                      <p>Home<i class="fas fa-angle-right"></i><span>donor</span></p>
-                  </div>
-              </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="_head_01">
+            <h2>donor</h2>
+            <p>Home<i class="fas fa-angle-right"></i><span>donor</span></p>
           </div>
-      </div>
-  </section>
-      <!-- ====================== donor2 Section started====================== -->
-      <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <h2 class="card-title text-center">Create Donation Post</h2>
-                    <div class="card-body py-md-4">
-                        <form action="submit_post.php" method="post">
-                            <div class="form-group">
-                                <label for="item_category">Item Category</label>
-                                <select class="form-control" id="item_category" name="item_category" required>
-                                    <option value="">Select category</option>
-                                    <option value="Blood donations">Blood donations</option>
-                                    <option value="Medication and medical supplies">Medication and medical supplies</option>
-                                    <option value="Pro-bono doctor visits/ appointments">Pro-bono doctor visits/ appointments</option>
-                                    <option value="School books">School books</option>
-                                    <option value="School supplies">School supplies</option>
-                                    <option value="Pro-bono teaching">Food</option>
-                                    <option value="Apartments/ living quarters (free or low rent)">Apartments/ living quarters (free or low rent)</option>
-                                    <option value="Clothes, shoes, bags, etc..">Clothes, shoes, bags, etc..</option>
-                                    <option value="Kitchen supplies">Kitchen supplies</option>
-                                    <option value="Food and groceries (includes fresh food)">Food and groceries (includes fresh food)</option>
-                                    <option value="Electrical appliances">Electrical appliances</option>
-                                    <option value="Toys">Toys</option>
-                                    <option value="Luxury foods (cakes, sweets, etc..)">Luxury foods (cakes, sweets, etc..)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_description">Item Description</label>
-                                <textarea class="form-control" id="item_description" name="item_description" rows="3" placeholder="Enter item description" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="quantity">Quantity</label>
-                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit Post</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
+      </div>
     </div>
-  
+  </section>
 
-    
+  <!-- ====================== donor2 Section started====================== -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <h2 class="card-title text-center">Create Donation Post</h2>
+          <div class="card-body py-md-4">
+            <form id="donation-form" action="#" method="post">
+              <div class="form-group">
+                <label for="item-category">Item Category</label>
+                <select class="form-control" id="item-category" name="item-category" required>
+                  <option value="">Select Item Category</option>
+                  <option value="Clothes">Clothes</option>
+                  <option value="Toys">Toys</option>
+                  <option value="Food">Food</option>
+                  <option value="Medical Supplies">Medical Supplies</option>
+                  <option value="School Supplies">School Supplies</option>
+                  <option value="Blood Donations">Blood Donations</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="item_description">Item Description</label>
+                <textarea class="form-control" id="item_description" name="item_description" rows="3"
+                  placeholder="Enter item description" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity"
+                  required>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit Post</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitForm() {
+      // Capture form data
+      var formData = {
+        itemCategory: document.getElementById('item-category').value,
+        itemDescription: document.getElementById('item_description').value,
+        quantity: document.getElementById('quantity').value
+      };
+
+      // Store form data in localStorage
+      localStorage.setItem('formData', JSON.stringify(formData));
+
+      // Redirect to organization1.html
+      window.location.href = 'organization1.html';
+    }
+  </script>
+
 </body>
 
 <script src="assets/js/jquery-3.2.1.min.js"></script>
