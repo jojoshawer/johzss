@@ -70,83 +70,43 @@
         </div>
     </section>
 
-    <!-- ====================== Pending Donation Requests Section started====================== -->
-    <section>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <h2 class="text-center mb-4">Pending Donation Requests</h2>
-                    <div id="pendingRequests"></div>
-                </div>
-            </div>
+    <!-- ====================== registration request  Data  ====================== -->
+    <div class="container">
+        <h1>Registration Form Data</h1>
+        <div id="storedFormData">
+            <!-- Form data will be displayed here -->
         </div>
-    </section>
+    </div>
 
+    <!-- JavaScript to display stored form data -->
+    // JavaScript to display stored form data
+<script>
+function displayFormData() {
+    // Add console.log to verify function call
+    console.log("displayFormData function called");
+    
+    var formData = JSON.parse(sessionStorage.getItem('organizationRegistrationData'));
 
-    <!-- ====================== Donation Requests Data (Example) ====================== -->
-    <script>
-        // Example data for pending donation requests
-        var pendingRequestsData = [
-            { id: 1, itemName: "Medication", quantity: 10 },
-            { id: 2, itemName: "Clothes", quantity: 20 },
-            { id: 3, itemName: "Food", quantity: 30 }
-            // Add more data as needed
-        ];
+    // Display form data on admin2.html
+    if (formData) {
+        document.getElementById('firstNameDisplay').textContent = formData.firstName;
+        document.getElementById('lastNameDisplay').textContent = formData.lastName;
+        document.getElementById('genderDisplay').textContent = formData.gender;
+        document.getElementById('emailDisplay').textContent = formData.email;
+        document.getElementById('contactDisplay').textContent = formData.contact;
+        document.getElementById('organizationDisplay').textContent = formData.organization;
+        document.getElementById('organizationTypeDisplay').textContent = formData.organizationType;
+        document.getElementById('addressDisplay').textContent = formData.address;
+        document.getElementById('areaDisplay').textContent = formData.area;
+        document.getElementById('governorateDisplay').textContent = formData.governorate;
+        // Update with additional fields as needed
+    }
+}
 
-        // Function to display pending donation requests
-        function displayPendingRequests() {
-            var pendingRequestsHtml = "";
-            pendingRequestsData.forEach(function(request) {
-                pendingRequestsHtml += `
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">${request.itemName}</h5>
-                            <p class="card-text">Quantity: ${request.quantity}</p>
-                            <button class="btn btn-success mr-2" onclick="approveRequest(${request.id})">Approve</button>
-                            <button class="btn btn-danger" onclick="rejectRequest(${request.id})">Reject</button>
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById("pendingRequests").innerHTML = pendingRequestsHtml;
-        }
+// Call the function to display form data when admin2.html page loads
+displayFormData();
+</script>
 
-        // Function to approve a request
-        function approveRequest(requestId) {
-            // Find the index of the request in the array
-            var index = pendingRequestsData.findIndex(function(request) {
-                return request.id === requestId;
-            });
-            // Remove the request from the array
-            if (index !== -1) {
-                pendingRequestsData.splice(index, 1);
-                // Update the displayed list
-                displayPendingRequests();
-            }
-        }
-
-        // Function to reject a request
-        function rejectRequest(requestId) {
-            // Find the index of the request in the array
-            var index = pendingRequestsData.findIndex(function(request) {
-                return request.id === requestId;
-            });
-            // Remove the request from the array
-            if (index !== -1) {
-                pendingRequestsData.splice(index, 1);
-                // Update the displayed list
-                displayPendingRequests();
-            }
-        }
-
-        // Display pending donation requests when the page loads
-        window.onload = displayPendingRequests;
-
-        // Function to open the change password page
-        function openChangePasswordForm() {
-            window.location.href = "adminchangepassword.html";
-        }
-    </script>
 
     <!-- ====================== change_password Requests Section started====================== -->
     <div class="change-password-btn">
@@ -158,6 +118,7 @@
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
+
 </body>
 
 </html>

@@ -143,6 +143,7 @@
                     <h2 class="card-title text-center"> Register form for Organization Representative</h2>
                     <div class="card-body py-md-4">
                         <form action="register.php" method="post" enctype="multipart/form-data">
+                          <form id="registrationForm" action="register.php" method="post" enctype="multipart/form-data"></form>
                             <div class="form-group">
                                 <label for="firstName">First Name</label>
                                 <input type="text" class="form-control" id="firstName" name="firstName"
@@ -241,10 +242,10 @@
     <script src="assets/js/script.js"></script>
 
     <script>
-      document.getElementById("createAccountBtn").addEventListener("click", function() {
-          window.location.href = "organization1.html";
-      });
-  </script>
+        document.getElementById("createAccountBtn").addEventListener("click", function() {
+            window.location.href = "organization1.html";
+        });
+    </script>
 
 
     <!-- Google Maps API -->
@@ -267,8 +268,43 @@
             });
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe3pWWHM9_uQWaswdNRsBl-FTp6a5aRP4&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    
+    <script>
+   // Function to save form data to sessionStorage with a specific key
+function saveFormData(formData, key) {
+    sessionStorage.setItem(key, JSON.stringify(formData));
+}
 
+// Function to capture form data and submit
+function submitForm(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Capture form data
+    var formData = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        gender: document.getElementById('gender').value,
+        email: document.getElementById('email').value,
+        contact: document.getElementById('contact').value,
+        organization: document.getElementById('organization').value,
+        organizationType: document.getElementById('organization-type').value,
+        address: document.getElementById('address').value,
+        area: document.getElementById('area').value,
+        governorate: document.getElementById('governorate').value,
+        // Add more fields as needed
+    };
+
+    // Save form data to sessionStorage with a specific key
+    saveFormData(formData, 'organizationRegistrationData');
+
+    // Add console.log to verify data saving
+    console.log("Form data saved in session storage:", formData);
+
+    // Redirect to organization1.html after form submission
+    window.location.href = 'organization1.html';
+}
+  </script>
 </body>
 
 </html>
