@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Charity</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 15px 0;
+        }
+
+        .my-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .menu-items ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-items ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .menu-items ul li:last-child {
+            margin-right: 0;
+        }
+
+        .container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            margin-bottom: 15px;
+        }
+
+        .btn-donate {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-donate:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="my-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <img src="assets/images/logo.png" alt="Charity Logo">
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="menu-items">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="organization.html">Organization</a></li>
+                                <li><a href="donor.html">Donor</a></li>
+                                <li><a href="admin.html">Admin</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="bg-02-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="_head_01">
+                        <h2>Donor</h2>
+                        <p>Home <i class="fas fa-angle-right"></i><span>Donor</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Details Section -->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Donation Details</h2>
+                    <!-- Category Select Dropdown -->
+                    <div class="form-group">
+                        <label for="categorySelect">Select Category:</label>
+                        <select class="form-control" id="categorySelect">
+                            <option value="All">All</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Toys">Toys</option>
+                            <option value="Food">Food</option>
+                            <option value="Medical Supplies">Medical Supplies</option>
+                            <option value="School Supplies">School Supplies</option>
+                            <option value="Blood Donations">Blood Donations</option>
+                        </select>
+                    </div>
+                    <!-- Donation Details Container -->
+                    <div id="donation-container">
+                        <!-- Donation Post -->
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Donation Details Content -->
+                                <h5 class="card-title">Donation Details</h5>
+                                <div id="donation-details-content">
+                                    <!-- Donation details will be displayed here -->
+                                </div>
+                                <!-- Donate Button -->
+                                <button type="button" class="btn btn-primary btn-donate" id="donate-button">Donate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thank you message -->
+                    <div id="thank-you-message" style="display: none;">
+                        <h3 class="text-center">Thank you for your donation!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Information Script -->
+    <script>
+        var storedFormData = localStorage.getItem('formData');
+
+        if (storedFormData) {
+            var formData = JSON.parse(storedFormData);
+            displayDonation(formData);
+        }
+
+        function displayDonation(formData) {
+            var donationDetails = document.createElement('div');
+            donationDetails.classList.add('donation-details');
+
+            switch (formData.itemCategory) {
+                case 'Clothes':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Type of Clothing:</span> ${formData.clothesType}</p>
+                        <p><span>Age:</span> ${formData.clothesAge}</p>
+                        <p><span>Gender:</span> ${formData.clothesGender}</p>
+                        <p><span>Season:</span> ${formData.clothesSeason}</p>
+                        <p><span>Material:</span> ${formData.clothesMaterial}</p>
+                        <p><span>Quantity:</span> ${formData.clothesQuantity}</p>
+                        <div class="form-group">
+                            <label for="clothesQuantity">Quantity to donate:</label>
+                            <input type="number" class="form-control" id="clothesQuantity" name="clothesQuantity" min="1">
+                        </div>
+                    `;
+                    break;
+                case 'School Supplies':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Type:</span> ${formData.schoolSuppliesType}</p>
+                        <p><span>Additional Fields:</span> ${formData.additionalFields}</p>
+                        <p><span>Quantity:</span> ${formData.schoolSuppliesQuantity}</p>
+                        <div class="form-group">
+                            <label for="schoolSuppliesQuantity">Quantity to donate:</label>
+                            <input type="number" class="form-control" id="schoolSuppliesQuantity" name="schoolSuppliesQuantity" min="1">
+                        </div>
+                    `;
+                    break;
+                case 'Toys':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Age:</span> ${formData.toysAge}</p>
+                        <p><span>Gender:</span> ${formData.toysGender}</p>
+                        <p><span>Category:</span> ${formData.toysCategory}</p>
+                        <p><span>Quantity:</span> ${formData.toysQuantity}</p>
+                        <div class="form-group">
+                            <label for="toysQuantity">Quantity to donate:</label>
+                            <input type="number" class="form-control" id="toysQuantity" name="toysQuantity" min="1">
+                        </div>
+                    `;
+                    break;
+                case 'Food':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Type:</span> ${formData.foodType}</p>
+                        <p><span>Item Name:</span> ${formData.foodName}</p>
+                        <p><span>Quantity:</span> ${formData.foodQuantity} kg</p>
+                        <div class="form-group">
+                            <label for="foodQuantity">Quantity (kg) to donate:</label>
+                            <input type="number" class="form-control" id="foodQuantity" name="foodQuantity" min="0" step="0.1" required>
+                        </div>
+                    `;
+                    break;
+                case 'Medical Supplies':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Device Type:</span> ${formData.medicalDeviceType}</p>
+                        <p><span>Use:</span> ${formData.medicalUse}</p>
+                        <p><span>Quantity:</span> ${formData.medicalQuantity}</p>
+                        <div class="form-group">
+                            <label for="medicalQuantity">Quantity to donate:</label>
+                            <input type="number" class="form-control" id="medicalQuantity" name="medicalQuantity" min="1">
+                        </div>
+                    `;
+                    break;
+                case 'Blood Donations':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Hospital Name:</span> ${formData.hospitalName}</p>
+                        <p><span>Governorate:</span> ${formData.hospitalGovernorate}</p>
+                        <p><span>Area:</span> ${formData.hospitalArea}</p>
+                        <p><span>Donor Name:</span> ${formData.donorName}</p>
+                        <p><span>Blood Type:</span> ${formData.bloodType}</p>
+                        <p><span>Quantity:</span> ${formData.bloodQuantity}</p>
+                    `;
+                    break;
+                default:
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> Unknown</p>
+                    `;
+            }
+
+            document.getElementById('donation-details-content').appendChild(donationDetails);
+        }
+
+        // Event listener for category selection change
+        document.getElementById('categorySelect').addEventListener('change', function () {
+            var selectedCategory = this.value;
+            var storedFormData = localStorage.getItem('formData');
+
+            if (storedFormData) {
+                var formData = JSON.parse(storedFormData);
+
+                // Clear existing donation details
+                document.getElementById('donation-details-content').innerHTML = '';
+
+                // Display donation details based on the selected category
+                if (selectedCategory === 'All' || selectedCategory === formData.itemCategory) {
+                    displayDonation(formData);
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('donate-button').addEventListener('click', function () {
+        // Remove the donation post
+        document.getElementById('donation-container').innerHTML = '';
+        // Log a message to console
+        console.log('Donation made!');
+    });
+});
+        
+    </script>
+
+    <!-- JavaScript libraries -->
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
