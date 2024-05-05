@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -79,7 +79,10 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-md-6">
-                <a href="organization2.html" class="btn btn-secondary btn-block">Create Donation request </a>
+                <a href="organization2.html" class="btn btn-secondary btn-block">Create Donation Request</a>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0"> <!-- Added a new column for the button -->
+                <a href="orgfullfilled.html" class="btn btn-primary btn-block">Fulfilled Donations</a>
             </div>
         </div>
     </div>
@@ -91,17 +94,17 @@
 
     <script>
         var storedFormData = localStorage.getItem('formData');
-        
+
         if (storedFormData) {
             var formData = JSON.parse(storedFormData);
             displayDonation(formData);
         }
-    
+
         function displayDonation(formData) {
             var donationDetails = document.createElement('div');
             donationDetails.classList.add('donation-details');
-            
-            switch(formData.itemCategory) {
+
+            switch (formData.itemCategory) {
                 case 'Clothes':
                     donationDetails.innerHTML = `
                         <p><span>Item Category:</span> ${formData.itemCategory}</p>
@@ -111,6 +114,8 @@
                         <p><span>Season:</span> ${formData.clothesSeason}</p>
                         <p><span>Material:</span> ${formData.clothesMaterial}</p>
                         <p><span>Quantity:</span> ${formData.clothesQuantity}</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('Clothes')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
                     break;
                 case 'School Supplies':
@@ -119,6 +124,8 @@
                         <p><span>Type:</span> ${formData.schoolSuppliesType}</p>
                         <p><span>Additional Fields:</span> ${formData.additionalFields}</p>
                         <p><span>Quantity:</span> ${formData.schoolSuppliesQuantity}</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('School Supplies')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
                     break;
                 case 'Toys':
@@ -128,6 +135,8 @@
                         <p><span>Gender:</span> ${formData.toysGender}</p>
                         <p><span>Category:</span> ${formData.toysCategory}</p>
                         <p><span>Quantity:</span> ${formData.toysQuantity}</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('Toys')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
                     break;
                 case 'Food':
@@ -136,6 +145,8 @@
                         <p><span>Type:</span> ${formData.foodType}</p>
                         <p><span>Item Name:</span> ${formData.foodName}</p>
                         <p><span>Quantity:</span> ${formData.foodQuantity} kg</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('Food')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
                     break;
                 case 'Medical Supplies':
@@ -144,6 +155,8 @@
                         <p><span>Device Type:</span> ${formData.medicalDeviceType}</p>
                         <p><span>Use:</span> ${formData.medicalUse}</p>
                         <p><span>Quantity:</span> ${formData.medicalQuantity}</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('Medical Supplies')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
                     break;
                 case 'Blood Donations':
@@ -155,34 +168,90 @@
                         <p><span>Donor Name:</span> ${formData.donorName}</p>
                         <p><span>Blood Type:</span> ${formData.bloodType}</p>
                         <p><span>Quantity:</span> ${formData.bloodQuantity}</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('Blood Donations')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
                     break;
                 default:
                     donationDetails.innerHTML = `
                         <p><span>Item Category:</span> Unknown</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('Unknown')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
             }
-            
+
             document.getElementById('donation-container').appendChild(donationDetails);
         }
-    
 
-        // Function to edit donation
-        function editDonation(button) {
-            var donationDetails = button.parentNode;
-            var editedItemCategory = prompt("Enter new item category:", donationDetails.querySelector('p:nth-child(1) span').innerText);
-            var editedItemDescription = prompt("Enter new item description:", donationDetails.querySelector('p:nth-child(2) span').innerText);
-            var editedQuantity = prompt("Enter new quantity:", donationDetails.querySelector('p:nth-child(3) span').innerText);
+        // Function to update donation based on category
+        function updateDonation(category) {
+            var donationDetails = event.target.parentNode;
+            var updatedData = {};
+            switch (category) {
+                case 'Clothes':
+                    updatedData = {
+                        clothesType: prompt("Enter new type of clothing:", formData.clothesType),
+                        clothesAge: prompt("Enter new age:", formData.clothesAge),
+                        clothesGender: prompt("Enter new gender:", formData.clothesGender),
+                        clothesSeason: prompt("Enter new season:", formData.clothesSeason),
+                        clothesMaterial: prompt("Enter new material:", formData.clothesMaterial),
+                        clothesQuantity: prompt("Enter new quantity:", formData.clothesQuantity)
+                    };
+                    break;
+                case 'School Supplies':
+                    updatedData = {
+                        schoolSuppliesType: prompt("Enter new type of school supplies:", formData.schoolSuppliesType),
+                        additionalFields: prompt("Enter new additional fields:", formData.additionalFields),
+                        schoolSuppliesQuantity: prompt("Enter new quantity:", formData.schoolSuppliesQuantity)
+                    };
+                    break;
+                case 'Toys':
+                    updatedData = {
+                        toysAge: prompt("Enter new age:", formData.toysAge),
+                        toysGender: prompt("Enter new gender:", formData.toysGender),
+                        toysCategory: prompt("Enter new category:", formData.toysCategory),
+                        toysQuantity: prompt("Enter new quantity:", formData.toysQuantity)
+                    };
+                    break;
+                case 'Food':
+                    updatedData = {
+                        foodType: prompt("Enter new type of food:", formData.foodType),
+                        foodName: prompt("Enter new food name:", formData.foodName),
+                        foodQuantity: prompt("Enter new quantity:", formData.foodQuantity)
+                    };
+                    break;
+                case 'Medical Supplies':
+                    updatedData = {
+                        medicalDeviceType: prompt("Enter new device type:", formData.medicalDeviceType),
+                        medicalUse: prompt("Enter new use:", formData.medicalUse),
+                        medicalQuantity: prompt("Enter new quantity:", formData.medicalQuantity)
+                    };
+                    break;
+                case 'Blood Donations':
+                    updatedData = {
+                        hospitalName: prompt("Enter new hospital name:", formData.hospitalName),
+                        hospitalGovernorate: prompt("Enter new governorate:", formData.hospitalGovernorate),
+                        hospitalArea: prompt("Enter new area:", formData.hospitalArea),
+                        donorName: prompt("Enter new donor name:", formData.donorName),
+                        bloodType: prompt("Enter new blood type:", formData.bloodType),
+                        bloodQuantity: prompt("Enter new quantity:", formData.bloodQuantity)
+                    };
+                    break;
+                case 'Unknown':
+                    alert("Cannot update unknown category.");
+                    return;
+                default:
+                    alert("Invalid category.");
+                    return;
+            }
 
-            // Update the donation details
-            donationDetails.querySelector('p:nth-child(1) span').innerText = editedItemCategory;
-            donationDetails.querySelector('p:nth-child(2) span').innerText = editedItemDescription;
-            donationDetails.querySelector('p:nth-child(3) span').innerText = editedQuantity;
+            // Update the donation details with new data
+            for (var key in updatedData) {
+                formData[key] = updatedData[key];
+                donationDetails.querySelector(`p span[data-key="${key}"]`).innerText = updatedData[key];
+            }
 
             // Update the stored form data
-            formData.itemCategory = editedItemCategory;
-            formData.itemDescription = editedItemDescription;
-            formData.quantity = editedQuantity;
             localStorage.setItem('formData', JSON.stringify(formData));
         }
 

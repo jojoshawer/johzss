@@ -120,39 +120,52 @@
   });
 
   function addClothesFields() {
-    const fieldsHTML = `
-      <div class="form-group">
-        <label for="clothes-type">Type of Clothing</label>
-        <input type="text" class="form-control" id="clothes-type" name="clothes-type">
-      </div>
-      <div class="form-group">
-        <label for="clothes-age">Age</label>
-        <input type="text" class="form-control" id="clothes-age" name="clothes-age">
-      </div>
-      <div class="form-group">
-        <label for="clothes-gender">Gender</label>
-        <select class="form-control" id="clothes-gender" name="clothes-gender">
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Unisex">Unisex</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="clothes-season">Season</label>
-        <input type="text" class="form-control" id="clothes-season" name="clothes-season">
-      </div>
-      <div class="form-group">
-        <label for="clothes-material">Material</label>
-        <input type="text" class="form-control" id="clothes-material" name="clothes-material">
-      </div>
-      <div class="form-group">
-        <label for="clothes-quantity">Quantity</label>
-        <input type="number" class="form-control" id="clothes-quantity" name="clothes-quantity">
-      </div>
-    `;
-    dynamicFieldsContainer.innerHTML = fieldsHTML;
-  }
+  const fieldsHTML = `
+    <div class="form-group">
+      <label for="clothes-type">Type of Clothing</label>
+      <input type="text" class="form-control" id="clothes-type" name="clothes-type">
+    </div>
+    <div class="form-group">
+      <label for="clothes-age">Age</label>
+      <select class="form-control" id="clothes-age" name="clothes-age">
+        <option value="">Select Age Range</option>
+        <option value="Child">Child</option>
+        <option value="Teen">Teen</option>
+        <option value="Adult">Adult</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="clothes-gender">Gender</label>
+      <select class="form-control" id="clothes-gender" name="clothes-gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Unisex">Unisex</option>
+      </select>
+    </div>
+    <div class="form-group">
+  <label for="clothes-season">Season</label>
+  <select class="form-control" id="clothes-season" name="clothes-season">
+    <option value="">Select Season</option>
+    <option value="Spring">Spring</option>
+    <option value="Summer">Summer</option>
+    <option value="Autumn">Autumn</option>
+    <option value="Winter">Winter</option>
+  </select>
+</div>
+
+    <div class="form-group">
+      <label for="clothes-material">Material</label>
+      <input type="text" class="form-control" id="clothes-material" name="clothes-material">
+    </div>
+    <div class="form-group">
+      <label for="clothes-quantity">Quantity</label>
+      <input type="number" class="form-control" id="clothes-quantity" name="clothes-quantity">
+    </div>
+  `;
+  dynamicFieldsContainer.innerHTML = fieldsHTML;
+} 
+
 
   function addSchoolSuppliesFields() {
       const fieldsHTML = `
@@ -224,7 +237,13 @@
     const fieldsHTML = `
       <div class="form-group">
         <label for="toys-age">Age</label>
-        <input type="text" class="form-control" id="toys-age" name="toys-age">
+        <select class="form-control" id="toys-age" name="toys-age">
+          <option value="">Select Age Range</option>
+          <option value="Infant">Infant</option>
+          <option value="Toddler">Toddler</option>
+          <option value="Preschool">Preschool</option>
+          <option value="School Age">School Age</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="toys-gender">Gender</label>
@@ -237,7 +256,15 @@
       </div>
       <div class="form-group">
         <label for="toys-category">Category</label>
-        <input type="text" class="form-control" id="toys-category" name="toys-category">
+        <select class="form-control" id="toys-category" name="toys-category">
+          <option value="">Select Toy Category</option>
+          <option value="Board Games">Board Games</option>
+          <option value="Stuffed Toys">Stuffed Toys</option>
+          <option value="Dolls">Dolls</option>
+          <option value="Sports">Sports</option>
+          <option value="Cars">Cars</option>
+          <option value="Outdoor">Outdoor</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="toys-quantity">Quantity</label>
@@ -279,7 +306,13 @@
       </div>
       <div class="form-group">
         <label for="medical-use">Use</label>
-        <input type="text" class="form-control" id="medical-use" name="medical-use">
+        <select class="form-control" id="medical-use" name="medical-use">
+          <option value="">Select Medical Use</option>
+          <option value="First Aid">First Aid</option>
+          <option value="Surgery">Surgery</option>
+          <option value="Diagnostics">Diagnostics</option>
+          <option value="Therapeutics">Therapeutics</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="medical-image">Image</label>

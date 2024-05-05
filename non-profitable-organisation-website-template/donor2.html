@@ -154,8 +154,24 @@
                         </select>
                     </div>
                     <!-- Donation Details Container -->
-                    <div id="donation-container"></div>
-                    <button type="submit" class="btn btn-primary btn-donate">Donate</button>
+                    <div id="donation-container">
+                        <!-- Donation Post -->
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Donation Details Content -->
+                                <h5 class="card-title">Donation Details</h5>
+                                <div id="donation-details-content">
+                                    <!-- Donation details will be displayed here -->
+                                </div>
+                                <!-- Donate Button -->
+                                <button type="button" class="btn btn-primary btn-donate" id="donate-button">Donate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thank you message -->
+                    <div id="thank-you-message" style="display: none;">
+                        <h3 class="text-center">Thank you for your donation!</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -256,7 +272,7 @@
                     `;
             }
 
-            document.getElementById('donation-container').appendChild(donationDetails);
+            document.getElementById('donation-details-content').appendChild(donationDetails);
         }
 
         // Event listener for category selection change
@@ -268,7 +284,7 @@
                 var formData = JSON.parse(storedFormData);
 
                 // Clear existing donation details
-                document.getElementById('donation-container').innerHTML = '';
+                document.getElementById('donation-details-content').innerHTML = '';
 
                 // Display donation details based on the selected category
                 if (selectedCategory === 'All' || selectedCategory === formData.itemCategory) {
@@ -276,6 +292,16 @@
                 }
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('donate-button').addEventListener('click', function () {
+        // Remove the donation post
+        document.getElementById('donation-container').innerHTML = '';
+        // Log a message to console
+        console.log('Donation made!');
+    });
+});
+        
     </script>
 
     <!-- JavaScript libraries -->
