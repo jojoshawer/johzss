@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Charity</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- ======================header started====================== -->
+
+  <header>
+    <div class="my-nav">
+      <div class="container">
+        <div class="row">
+          <div class="nav-items">
+            <div class="menu-toggle"></div>
+            <div class="logo">
+              <img src="assets/images/logo.png">
+            </div>
+            <div class="menu-items">
+              <div class="menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="organization.html">organization</a></li>
+                  <li><a href="donor.html">donor</a></li>
+                  <li><a href="admin.html">admin</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-02-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="_head_01">
+            <h2>donor</h2>
+            <p>Home<i class="fas fa-angle-right"></i><span>donor</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== donor2 Section started====================== -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <h2 class="card-title text-center">Create Donation Post</h2>
+          <div class="card-body py-md-4">
+            <form id="donation-form" action="#" method="post">
+              <div class="form-group">
+                <label for="item-category">Item Category</label>
+                <select class="form-control" id="item-category" name="item-category" required>
+                  <option value="">Select Item Category</option>
+                  <option value="Clothes">Clothes</option>
+                  <option value="Toys">Toys</option>
+                  <option value="Food">Food</option>
+                  <option value="Medical Supplies">Medical Supplies</option>
+                  <option value="School Supplies">School Supplies</option>
+                  <option value="Blood Donations">Blood Donations</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="item_description">Item Description</label>
+                <textarea class="form-control" id="item_description" name="item_description" rows="3"
+                  placeholder="Enter item description" required></textarea>
+              </div>
+              <div id="dynamic-fields"></div>
+
+              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit Post</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const categorySelect = document.getElementById('item-category');
+  const dynamicFieldsContainer = document.getElementById('dynamic-fields');
+
+  categorySelect.addEventListener('change', (e) => {
+    const selectedCategory = e.target.value;
+    dynamicFieldsContainer.innerHTML = ''; // Clear existing fields
+
+    switch (selectedCategory) {
+      case 'Clothes':
+        addClothesFields();
+        break;
+      case 'School Supplies':
+        addSchoolSuppliesFields();
+        break;
+      case 'Toys':
+        addToysFields();
+        break;
+      case 'Food':
+        addFoodFields();
+        break;
+      case 'Medical Supplies':
+        addMedicalSuppliesFields();
+        break;
+      case 'Blood Donations':
+        addBloodDonationsFields();
+        break;
+      default:
+        // Do nothing
+    }
+  });
+
+  function addClothesFields() {
+    const fieldsHTML = `
+      <div class="form-group">
+        <label for="clothes-type">Type of Clothing</label>
+        <input type="text" class="form-control" id="clothes-type" name="clothes-type">
+      </div>
+      <div class="form-group">
+        <label for="clothes-age">Age</label>
+        <input type="text" class="form-control" id="clothes-age" name="clothes-age">
+      </div>
+      <div class="form-group">
+        <label for="clothes-gender">Gender</label>
+        <select class="form-control" id="clothes-gender" name="clothes-gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Unisex">Unisex</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="clothes-season">Season</label>
+        <input type="text" class="form-control" id="clothes-season" name="clothes-season">
+      </div>
+      <div class="form-group">
+        <label for="clothes-material">Material</label>
+        <input type="text" class="form-control" id="clothes-material" name="clothes-material">
+      </div>
+      <div class="form-group">
+        <label for="clothes-quantity">Quantity</label>
+        <input type="number" class="form-control" id="clothes-quantity" name="clothes-quantity">
+      </div>
+    `;
+    dynamicFieldsContainer.innerHTML = fieldsHTML;
+  }
+
+  function addSchoolSuppliesFields() {
+      const fieldsHTML = `
+        <div class="form-group">
+          <label for="school-supplies-type">Type</label>
+          <select class="form-control" id="school-supplies-type" name="school-supplies-type">
+            <option value="">Select Type</option>
+            <option value="Stationary">Stationary</option>
+            <option value="Books">Books</option>
+          </select>
+        </div>
+      `;
+      dynamicFieldsContainer.innerHTML = fieldsHTML;
+
+      const typeSelect = document.getElementById('school-supplies-type');
+      typeSelect.addEventListener('change', () => {
+        const selectedType = typeSelect.value;
+        let additionalFieldsHTML = '';
+
+        if (selectedType === 'Stationary') {
+          additionalFieldsHTML = `
+            <div class="form-group">
+              <label for="stationary-item">Item</label>
+              <input type="text" class="form-control" id="stationary-item" name="stationary-item">
+            </div>
+            <div class="form-group">
+              <label for="stationary-quantity">Quantity</label>
+              <input type="number" class="form-control" id="stationary-quantity" name="stationary-quantity">
+            </div>
+          `;
+        } else if (selectedType === 'Books') {
+          additionalFieldsHTML = `
+            <div class="form-group">
+              <label for="book-name">Book Name</label>
+              <input type="text" class="form-control" id="book-name" name="book-name">
+            </div>
+            <div class="form-group">
+              <label for="book-author">Author</label>
+              <input type="text" class="form-control" id="book-author" name="book-author">
+            </div>
+            <div class="form-group">
+              <label for="book-language">Language</label>
+              <input type="text" class="form-control" id="book-language" name="book-language">
+            </div>
+            <div class="form-group">
+              <label for="book-edition">Edition</label>
+              <input type="text" class="form-control" id="book-edition" name="book-edition">
+            </div>
+            <div class="form-group">
+              <label for="book-summary">Summary</label>
+              <textarea class="form-control" id="book-summary" name="book-summary" rows="3" placeholder="Enter a short summary of the book"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="book-image">Book Image</label>
+              <input type="file" class="form-control" id="book-image" name="book-image">
+            </div>
+            <div class="form-group">
+              <label for="book-quantity">Quantity</label>
+              <input type="number" class="form-control" id="book-quantity" name="book-quantity">
+            </div>
+          `;
+        }
+
+        // Append additional fields to the form
+        dynamicFieldsContainer.insertAdjacentHTML('beforeend', additionalFieldsHTML);
+      });
+    }
+  function addToysFields() {
+    const fieldsHTML = `
+      <div class="form-group">
+        <label for="toys-age">Age</label>
+        <input type="text" class="form-control" id="toys-age" name="toys-age">
+      </div>
+      <div class="form-group">
+        <label for="toys-gender">Gender</label>
+        <select class="form-control" id="toys-gender" name="toys-gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Unisex">Unisex</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="toys-category">Category</label>
+        <input type="text" class="form-control" id="toys-category" name="toys-category">
+      </div>
+      <div class="form-group">
+        <label for="toys-quantity">Quantity</label>
+        <input type="number" class="form-control" id="toys-quantity" name="toys-quantity">
+      </div>
+    `;
+    dynamicFieldsContainer.innerHTML = fieldsHTML;
+  }
+
+  function addFoodFields() {
+    const fieldsHTML = `
+      <div class="form-group">
+        <label for="food-type">Type</label>
+        <select class="form-control" id="food-type" name="food-type">
+          <option value="">Select Type</option>
+          <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+          <option value="Canned Foods">Canned Foods</option>
+          <option value="Fresh Meals">Fresh Meals</option>
+          <option value="Baked">Baked</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="food-name">Item Name</label>
+        <input type="text" class="form-control" id="food-name" name="food-name">
+      </div>
+      <div class="form-group">
+        <label for="food-quantity">Quantity (in kg)</label>
+        <input type="number" class="form-control" id="food-quantity" name="food-quantity">
+      </div>
+    `;
+    dynamicFieldsContainer.innerHTML = fieldsHTML;
+  }
+
+  function addMedicalSuppliesFields() {
+    const fieldsHTML = `
+      <div class="form-group">
+        <label for="medical-device-type">Device Type</label>
+        <input type="text" class="form-control" id="medical-device-type" name="medical-device-type">
+      </div>
+      <div class="form-group">
+        <label for="medical-use">Use</label>
+        <input type="text" class="form-control" id="medical-use" name="medical-use">
+      </div>
+      <div class="form-group">
+        <label for="medical-image">Image</label>
+        <input type="file" class="form-control" id="medical-image" name="medical-image">
+      </div>
+      <div class="form-group">
+        <label for="medical-quantity">Quantity</label>
+        <input type="number" class="form-control" id="medical-quantity" name="medical-quantity">
+      </div>
+    `;
+    dynamicFieldsContainer.innerHTML = fieldsHTML;
+  }
+
+  function addBloodDonationsFields() {
+    const fieldsHTML = `
+      <div class="form-group">
+        <label for="hospital-name">Hospital Name</label>
+        <input type="text" class="form-control" id="hospital-name" name="hospital-name">
+      </div>
+      <div class="form-group">
+        <label for="hospital-governorate">Governorate</label>
+        <input type="text" class="form-control" id="hospital-governorate" name="hospital-governorate">
+      </div>
+      <div class="form-group">
+        <label for="hospital-area">Area</label>
+        <input type="text" class="form-control" id="hospital-area" name="hospital-area">
+      </div>
+      <div class="form-group">
+        <label for="donor-name">Donor Name</label>
+        <input type="text" class="form-control" id="donor-name" name="donor-name">
+      </div>
+      <div class="form-group">
+        <label for="blood-type">Blood Type</label>
+        <input type="text" class="form-control" id="blood-type" name="blood-type">
+      </div>
+      <div class="form-group">
+        <label for="blood-quantity">Quantity</label>
+        <input type="number" class="form-control" id="blood-quantity" name="blood-quantity">
+      </div>
+    `;
+    dynamicFieldsContainer.innerHTML = fieldsHTML;
+  }
+
+  function submitForm() {
+  // Capture form data based on category
+  const selectedCategory = categorySelect.value;
+  let formData = {
+    itemCategory: selectedCategory,
+    itemDescription: document.getElementById('item_description').value,
+  };
+
+  // Add more fields based on the selected category
+  switch (selectedCategory) {
+    case 'Clothes':
+      formData.clothesType = document.getElementById('clothes-type').value;
+      formData.clothesAge = document.getElementById('clothes-age').value;
+      formData.clothesGender = document.getElementById('clothes-gender').value;
+      formData.clothesSeason = document.getElementById('clothes-season').value;
+      formData.clothesMaterial = document.getElementById('clothes-material').value;
+      formData.quantity = document.getElementById('clothes-quantity').value;
+      break;
+    case 'School Supplies':
+      formData.schoolSuppliesType = document.getElementById('school-supplies-type').value;
+      if (formData.schoolSuppliesType === 'Stationary') {
+        formData.stationaryItem = document.getElementById('stationary-item').value;
+        formData.stationaryQuantity = document.getElementById('stationary-quantity').value;
+      } else if (formData.schoolSuppliesType === 'Books') {
+        formData.bookName = document.getElementById('book-name').value;
+        formData.bookAuthor = document.getElementById('book-author').value;
+        formData.bookLanguage = document.getElementById('book-language').value;
+        formData.bookEdition = document.getElementById('book-edition').value;
+        formData.bookSummary = document.getElementById('book-summary').value;
+        formData.bookQuantity = document.getElementById('book-quantity').value;
+      }
+      break;
+    case 'Toys':
+      formData.toysAge = document.getElementById('toys-age').value;
+      formData.toysGender = document.getElementById('toys-gender').value;
+      formData.toysCategory = document.getElementById('toys-category').value;
+      formData.quantity = document.getElementById('toys-quantity').value;
+      break;
+    case 'Food':
+      formData.foodType = document.getElementById('food-type').value;
+      formData.foodName = document.getElementById('food-name').value;
+      formData.foodQuantity = document.getElementById('food-quantity').value;
+      break;
+    case 'Medical Supplies':
+      formData.medicalDeviceType = document.getElementById('medical-device-type').value;
+      formData.medicalUse = document.getElementById('medical-use').value;
+      formData.medicalQuantity = document.getElementById('medical-quantity').value;
+      break;
+    case 'Blood Donations':
+      formData.hospitalName = document.getElementById('hospital-name').value;
+      formData.hospitalGovernorate = document.getElementById('hospital-governorate').value;
+      formData.hospitalArea = document.getElementById('hospital-area').value;
+      formData.donorName = document.getElementById('donor-name').value;
+      formData.bloodType = document.getElementById('blood-type').value;
+      formData.quantity = document.getElementById('blood-quantity').value;
+      break;
+    default:
+      // Do nothing
+  }
+
+  // Store form data in localStorage
+  localStorage.setItem('formData', JSON.stringify(formData));
+
+  // Redirect to organization1.html
+  window.location.href = 'organization1.html';
+}
+
+</script>
+
+
+</body>
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
+
+</html>
