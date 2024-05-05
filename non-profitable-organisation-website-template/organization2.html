@@ -324,19 +324,72 @@
   }
 
   function submitForm() {
-    // Capture form data
-    const formData = {
-      itemCategory: categorySelect.value,
-      itemDescription: document.getElementById('item_description').value,
-      // Add more fields based on the selected category
-    };
+  // Capture form data based on category
+  const selectedCategory = categorySelect.value;
+  let formData = {
+    itemCategory: selectedCategory,
+    itemDescription: document.getElementById('item_description').value,
+  };
 
-    // Store form data in localStorage
-    localStorage.setItem('formData', JSON.stringify(formData));
-
-    // Redirect to organization1.html
-    window.location.href = 'organization1.html';
+  // Add more fields based on the selected category
+  switch (selectedCategory) {
+    case 'Clothes':
+      formData.clothesType = document.getElementById('clothes-type').value;
+      formData.clothesAge = document.getElementById('clothes-age').value;
+      formData.clothesGender = document.getElementById('clothes-gender').value;
+      formData.clothesSeason = document.getElementById('clothes-season').value;
+      formData.clothesMaterial = document.getElementById('clothes-material').value;
+      formData.quantity = document.getElementById('clothes-quantity').value;
+      break;
+    case 'School Supplies':
+      formData.schoolSuppliesType = document.getElementById('school-supplies-type').value;
+      if (formData.schoolSuppliesType === 'Stationary') {
+        formData.stationaryItem = document.getElementById('stationary-item').value;
+        formData.stationaryQuantity = document.getElementById('stationary-quantity').value;
+      } else if (formData.schoolSuppliesType === 'Books') {
+        formData.bookName = document.getElementById('book-name').value;
+        formData.bookAuthor = document.getElementById('book-author').value;
+        formData.bookLanguage = document.getElementById('book-language').value;
+        formData.bookEdition = document.getElementById('book-edition').value;
+        formData.bookSummary = document.getElementById('book-summary').value;
+        formData.bookQuantity = document.getElementById('book-quantity').value;
+      }
+      break;
+    case 'Toys':
+      formData.toysAge = document.getElementById('toys-age').value;
+      formData.toysGender = document.getElementById('toys-gender').value;
+      formData.toysCategory = document.getElementById('toys-category').value;
+      formData.quantity = document.getElementById('toys-quantity').value;
+      break;
+    case 'Food':
+      formData.foodType = document.getElementById('food-type').value;
+      formData.foodName = document.getElementById('food-name').value;
+      formData.foodQuantity = document.getElementById('food-quantity').value;
+      break;
+    case 'Medical Supplies':
+      formData.medicalDeviceType = document.getElementById('medical-device-type').value;
+      formData.medicalUse = document.getElementById('medical-use').value;
+      formData.medicalQuantity = document.getElementById('medical-quantity').value;
+      break;
+    case 'Blood Donations':
+      formData.hospitalName = document.getElementById('hospital-name').value;
+      formData.hospitalGovernorate = document.getElementById('hospital-governorate').value;
+      formData.hospitalArea = document.getElementById('hospital-area').value;
+      formData.donorName = document.getElementById('donor-name').value;
+      formData.bloodType = document.getElementById('blood-type').value;
+      formData.quantity = document.getElementById('blood-quantity').value;
+      break;
+    default:
+      // Do nothing
   }
+
+  // Store form data in localStorage
+  localStorage.setItem('formData', JSON.stringify(formData));
+
+  // Redirect to organization1.html
+  window.location.href = 'organization1.html';
+}
+
 </script>
 
 

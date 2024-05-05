@@ -96,18 +96,76 @@
             var formData = JSON.parse(storedFormData);
             displayDonation(formData);
         }
+    
         function displayDonation(formData) {
             var donationDetails = document.createElement('div');
             donationDetails.classList.add('donation-details');
-            donationDetails.innerHTML = `
-                <p><span>Item Category:</span> ${formData.itemCategory}</p>
-                <p><span>Item Description:</span> ${formData.itemDescription}</p>
-                <p><span>Quantity:</span> ${formData.quantity}</p>
-                <button class="btn btn-primary btn-update" onclick="editDonation(this)">Edit</button>
-                <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
-            `;
+            
+            switch(formData.itemCategory) {
+                case 'Clothes':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Type of Clothing:</span> ${formData.clothesType}</p>
+                        <p><span>Age:</span> ${formData.clothesAge}</p>
+                        <p><span>Gender:</span> ${formData.clothesGender}</p>
+                        <p><span>Season:</span> ${formData.clothesSeason}</p>
+                        <p><span>Material:</span> ${formData.clothesMaterial}</p>
+                        <p><span>Quantity:</span> ${formData.clothesQuantity}</p>
+                    `;
+                    break;
+                case 'School Supplies':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Type:</span> ${formData.schoolSuppliesType}</p>
+                        <p><span>Additional Fields:</span> ${formData.additionalFields}</p>
+                        <p><span>Quantity:</span> ${formData.schoolSuppliesQuantity}</p>
+                    `;
+                    break;
+                case 'Toys':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Age:</span> ${formData.toysAge}</p>
+                        <p><span>Gender:</span> ${formData.toysGender}</p>
+                        <p><span>Category:</span> ${formData.toysCategory}</p>
+                        <p><span>Quantity:</span> ${formData.toysQuantity}</p>
+                    `;
+                    break;
+                case 'Food':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Type:</span> ${formData.foodType}</p>
+                        <p><span>Item Name:</span> ${formData.foodName}</p>
+                        <p><span>Quantity:</span> ${formData.foodQuantity} kg</p>
+                    `;
+                    break;
+                case 'Medical Supplies':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Device Type:</span> ${formData.medicalDeviceType}</p>
+                        <p><span>Use:</span> ${formData.medicalUse}</p>
+                        <p><span>Quantity:</span> ${formData.medicalQuantity}</p>
+                    `;
+                    break;
+                case 'Blood Donations':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
+                        <p><span>Hospital Name:</span> ${formData.hospitalName}</p>
+                        <p><span>Governorate:</span> ${formData.hospitalGovernorate}</p>
+                        <p><span>Area:</span> ${formData.hospitalArea}</p>
+                        <p><span>Donor Name:</span> ${formData.donorName}</p>
+                        <p><span>Blood Type:</span> ${formData.bloodType}</p>
+                        <p><span>Quantity:</span> ${formData.bloodQuantity}</p>
+                    `;
+                    break;
+                default:
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> Unknown</p>
+                    `;
+            }
+            
             document.getElementById('donation-container').appendChild(donationDetails);
         }
+    
 
         // Function to edit donation
         function editDonation(button) {
