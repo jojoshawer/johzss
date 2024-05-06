@@ -1,173 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Charity</title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    /* Custom styles */
-    body {
-      background-color: #f8f9fa;
-      color: #333;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Charity</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
 
-    header {
-      background-color: #343a40;
-      color: #fff;
-      padding: 15px 0;
-    }
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 15px 0;
+        }
 
-    .my-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .my-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo img {
-      height: 40px;
-    }
+        .logo img {
+            height: 40px;
+        }
 
-    .menu-items ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
+        .menu-items ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
 
-    .menu-items ul li {
-      display: inline-block;
-      margin-right: 20px;
-    }
+        .menu-items ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
 
-    .menu-items ul li:last-child {
-      margin-right: 0;
-    }
+        .menu-items ul li:last-child {
+            margin-right: 0;
+        }
 
-    .container {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
+        .container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 
-    .card {
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    .card-title {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 30px;
-    }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
 
-    .card-body {
-      padding: 30px;
-    }
+        .card-body {
+            padding: 30px;
+        }
 
-    .form-control {
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
+        .form-control {
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
 
-    .btn-primary {
-      border-radius: 20px;
-      padding: 12px 30px;
-    }
+        .btn-primary {
+            border-radius: 20px;
+            padding: 12px 30px;
+        }
 
-  </style>
+        /* Hide doctor and teaching fields by default */
+        .doctor-fields,
+        .teaching-fields {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- ======================header started====================== -->
-
-  <header>
+<header>
     <div class="my-nav">
-      <div class="container">
-        <div class="row">
-          <div class="nav-items">
-            <div class="menu-toggle"></div>
-            <div class="logo">
-              <img src="assets/images/logo.png">
-            </div>
-            <div class="menu-items">
-              <div class="menu">
-                <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="organization.html">organization</a></li>
-                  <li><a href="donor.html">donor</a></li>
-                  <li><a href="admin.html">admin</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <section class="bg-02-a">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <div class="_head_01">
-                      <h2>donor</h2>
-                      <p>Home<i class="fas fa-angle-right"></i><span>donor</span></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-    <!-- ====================== donor Section started====================== -->
- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card">
-                <h2 class="card-title text-center">Register form for donor </h2>
-                <div class="card-body py-md-4">
-                    <form action="register.php" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+        <div class="container">
+            <div class="row">
+                <div class="nav-items">
+                    <div class="menu-toggle"></div>
+                    <div class="logo">
+                        <img src="assets/images/logo.png">
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="organization.html">Organization</a></li>
+                                <li><a href="donor.html">Donor</a></li>
+                                <li><a href="admin.html">Admin</a></li>
+                            </ul>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-                        </div>
-                        <div class="form-group">
-                          <label for="file">Upload required documents for verification (if applicable).</label>
-                          <input type="file" class="form-control-file" id="file" name="file">
-                      </div>
-                        <div class="d-flex flex-row align-items-center justify-content-between">
-                            <button type="submit" class="btn btn-primary">Create Account</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+</header>
 
-  <div class="container">
+<section class="bg-02-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="_head_01">
+                    <h2>Donor</h2>
+                    <p>Home <i class="fas fa-angle-right"></i> <span>Donor</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="card">
-                <h2 class="card-title text-center">Register <a href="http://opensnippets.com">open snippets</a></h2>
+                <h2 class="card-title text-center">Registration for Donors</h2>
                 <div class="card-body py-md-4">
                     <form action="register.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" required>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
@@ -176,9 +158,73 @@
                             <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
                         </div>
                         <div class="form-group">
-                          <label for="file">Upload required documents for verification (if applicable).</label>
-                          <input type="file" class="form-control-file" id="file" name="file">
-                      </div>
+                            <input type="text" class="form-control" id="street_address" name="street_address" placeholder="Street Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="Postal Code" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="area" name="area" placeholder="Area" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="governorate" name="governorate" placeholder="Governorate" required>
+                        </div>
+                        <!-- Doctor fields -->
+                        <div class="doctor-fields">
+                            <div class="form-group">
+                                <label for="clinic_address">Clinic Address:</label>
+                                <input type="text" class="form-control" id="clinic_address" name="clinic_address" placeholder="Clinic Address">
+                            </div>
+                            <div class="form-group">
+                                <label for="clinic_area">Clinic Area:</label>
+                                <input type="text" class="form-control" id="clinic_area" name="clinic_area" placeholder="Clinic Area">
+                            </div>
+                            <div class="form-group">
+                                <label for="clinic_governorate">Clinic Governorate:</label>
+                                <input type="text" class="form-control" id="clinic_governorate" name="clinic_governorate" placeholder="Clinic Governorate">
+                            </div>
+                            <div class="form-group">
+                                <label for="specialty">Specialty:</label>
+                                <input type="text" class="form-control" id="specialty" name="specialty" placeholder="Specialty">
+                            </div>
+                            <div class="form-group">
+                                <label for="pro_bono_cases">Number of Pro-bono Cases:</label>
+                                <input type="number" class="form-control" id="pro_bono_cases" name="pro_bono_cases" placeholder="Number of Pro-bono Cases">
+                            </div>
+                        </div>
+                        <!-- End of Doctor fields -->
+                        <!-- Teaching fields -->
+                        <div class="teaching-fields">
+                            <div class="form-group">
+                                <label for="subjects">Subjects I Can Teach:</label>
+                                <input type="text" class="form-control" id="subjects" name="subjects" placeholder="Subjects I Can Teach">
+                            </div>
+                            <div class="form-group">
+                                <label for="pro_bono_classes">Number of Pro-bono Classes:</label>
+                                <input type="number" class="form-control" id="pro_bono_classes" name="pro_bono_classes" placeholder="Number of Pro-bono Classes">
+                            </div>
+                            <div class="form-group">
+                                <label for="pro_bono_students">Number of Pro-bono Students:</label>
+                                <input type="number" class="form-control" id="pro_bono_students" name="pro_bono_students" placeholder="Number of Pro-bono Students">
+                            </div>
+                        </div>
+                        <!-- End of Teaching fields -->
+                        <div class="form-group">
+                            <label for="role">Select Volunteer Role:</label>
+                            <select class="form-control" id="role" name="role" onchange="toggleFieldsVisibility()" required>
+                                <option value="" disabled selected>Select Role</option>
+                                <option value="regular_donor">Regular Donor</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="doctor">Doctor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Upload required documents for verification (if applicable).</label>
+                            <input type="file" class="form-control-file" id="file" name="file">
+                        </div>
                         <div class="d-flex flex-row align-items-center justify-content-between">
                             <button type="submit" class="btn btn-primary">Create Account</button>
                         </div>
@@ -188,11 +234,37 @@
         </div>
     </div>
 </div>
-</body>
+
+<script>
+    // Function to toggle doctor and teaching fields visibility based on selected role
+    function toggleFieldsVisibility() {
+        var role = document.getElementById("role").value.toLowerCase();
+        var doctorFields = document.querySelector(".doctor-fields");
+        var teachingFields = document.querySelector(".teaching-fields");
+
+        if (role === "doctor") {
+            // If the selected role is Doctor, show the Doctor fields and hide Teaching fields
+            doctorFields.style.display = "block";
+            teachingFields.style.display = "none";
+        } else if (role === "teacher") {
+            // If the selected role is Teacher, show the Teaching fields and hide Doctor fields
+            doctorFields.style.display = "none";
+            teachingFields.style.display = "block";
+        } else {
+            // If the selected role is not Doctor or Teacher, hide both Doctor and Teaching fields
+            doctorFields.style.display = "none";
+            teachingFields.style.display = "none";
+        }
+    }
+
+    // Call the toggleFieldsVisibility function when the page loads
+    window.onload = toggleFieldsVisibility;
+</script>
 
 <script src="assets/js/jquery-3.2.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/script.js"></script>
 
+</body>
 </html>
