@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -90,9 +90,9 @@
             background-color: #0056b3;
         }
 
-        .filter-label {
-            font-weight: bold;
-            margin-bottom: 10px;
+        /* Extra Filters */
+        .extra-filter {
+            display: none;
         }
 
     </style>
@@ -139,147 +139,197 @@
         </div>
     </section>
 
-    <!-- Filter Donation Requests Section -->
-    <section class="bg-light py-4">
+    <!-- Donation Details Section -->
+    <section>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <h2 class="text-center mb-4">Filter Donation Requests</h2>
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Donation Details</h2>
+                    <!-- Category Select Dropdown -->
                     <div class="form-group">
-                        <label class="filter-label" for="categoryFilter">Filter by Category:</label>
-                        <select class="form-control" id="categoryFilter" onchange="filterRequests()">
-                            <option value="all">All Categories</option>
-                            <option value="Blood donations">Blood Donations</option>
-                            <option value="Medication and medical supplies">Medication and Medical Supplies</option>
-                            <option value="Pro-bono doctor visits/ appointments">Pro-bono Doctor Visits/Appointments</option>
-                            <option value="School books">School Books</option>
-                            <option value="School supplies">School Supplies</option>
-                            <option value="Pro-bono teaching">Pro-bono Teaching</option>
-                            <option value="Apartments/ living quarters (free or low rent)">Apartments/Living Quarters (Free or Low Rent)</option>
-                            <option value="Clothes, shoes, bags, etc..">Clothes, Shoes, Bags, etc.</option>
-                            <option value="Kitchen supplies">Kitchen Supplies</option>
-                            <option value="Food and groceries (includes fresh food)">Food and Groceries (Includes Fresh Food)</option>
-                            <option value="Electrical appliances">Electrical Appliances</option>
+                        <label for="categorySelect">Select Category:</label>
+                        <select class="form-control" id="categorySelect">
+                            <option value="All">All</option>
+                            <option value="Clothes">Clothes</option>
                             <option value="Toys">Toys</option>
-                            <option value="Luxury foods (cakes, sweets, etc..)">Luxury Foods (Cakes, Sweets, etc.)</option>
+                            <option value="Food">Food</option>
+                            <option value="Medical Supplies">Medical Supplies</option>
+                            <option value="School Supplies">School Supplies</option>
+                            <option value="Blood Donations">Blood Donations</option>
                         </select>
+                    </div>
+                    <!-- Extra Filters -->
+                    <div id="extraFilters">
+                        <!-- Filters for Clothes -->
+                        <div id="clothesFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="clothes-age">Age</label>
+                                <select class="form-control" id="clothes-age" name="clothes-age">
+                                    <option value="All">All</option>
+                                  <option value="Child">Child</option>
+                                  <option value="Teen">Teen</option>
+                                  <option value="Adult">Adult</option>
+                                </select>
+                              </div>
+                            <div class="form-group">
+                                <label for="toysGender">Gender:</label>
+                                <select class="form-control" id="toysGender">
+                                    <option value="All">All</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Unisex">Unisex</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="clothes-season">Season</label>
+                                <select class="form-control" id="clothes-season" name="clothes-season">
+                                  <option value="">Select Season</option>
+                                  <option value="Spring">Spring</option>
+                                  <option value="Summer">Summer</option>
+                                  <option value="Autumn">Autumn</option>
+                                  <option value="Winter">Winter</option>
+                                </select>
+                              </div>
+                        </div>
+                        <!-- Filters for Toys -->
+                        <div id="toysFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="toysAge">Age:</label>
+                                <select class="form-control" id="toysAge">
+                                    <option value="All">All</option>
+                                    <option value="Infant">Infant</option>
+                                    <option value="Toddler">Toddler</option>
+                                    <option value="Pre School">Pre School</option>
+                                    <option value="School Age">School Age</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="toysGender">Gender:</label>
+                                <select class="form-control" id="toysGender">
+                                    <option value="All">All</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Unisex">Unisex</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-category">Category</label>
+                                <select class="form-control" id="toys-category" name="toys-category">
+                                  <option value="All">All</option>
+                                  <option value="Board Games">Board Games</option>
+                                  <option value="Stuffed Toys">Stuffed Toys</option>
+                                  <option value="Dolls">Dolls</option>
+                                  <option value="Sports">Sports</option>
+                                  <option value="Cars">Cars</option>
+                                  <option value="Outdoor">Outdoor</option>
+                                </select>
+                              </div>
+                        </div>
+                        <!-- Filters for Food -->
+                        <div id="foodFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="Type">Type:</label>
+                                <select class="form-control" id="foodUse">
+                                    <option value="All">All</option>
+                                    <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                                    <option value="Canned Foods">Canned Foods</option>
+                                    <option value="Fresh Meals">Fresh Meals</option>
+                                    <option value="Baked">Baked</option>
+                                </select>
+                            </div>
+                        </div>
+                    <!-- Filters for Medical Supplies -->
+                    <div id="MedicalSuppliesFilters" class="extra-filter">
+                        <div class="form-group">
+                            <label for="medical-use">Use</label>
+                            <select class="form-control" id="medical-use" name="medical-use">
+                              <option value="All">All</option>
+                              <option value="First Aid">First Aid</option>
+                              <option value="Surgery">Surgery</option>
+                              <option value="Diagnostics">Diagnostics</option>
+                              <option value="Therapeutics">Therapeutics</option>
+                            </select>
+                          </div>
+                    </div>
+                    <!-- Filters for School Supplies -->
+                    <div id="SchoolSuppliesFilters" class="extra-filter">
+                        <div class="form-group">
+                            <label for="school-supplies-type">Type</label>
+                            <select class="form-control" id="school-supplies-type" name="school-supplies-type">
+                              <option value="All">All</option>
+                              <option value="Stationary">Stationary</option>
+                              <option value="Books">Books</option>
+                            </select>
+                          </div>
+                    </div>
+                    </div>
+                    <!-- Donation Details Container -->
+                    <div id="donation-container">
+                        <!-- Donation Post -->
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Donation Details Content -->
+                                <h5 class="card-title">Donation Details</h5>
+                                <div id="donation-details-content">
+                                    <!-- Donation details will be displayed here -->
+                                </div>
+                                <!-- Donate Button -->
+                                <button type="button" class="btn btn-primary btn-donate" id="donate-button">Donate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thank you message -->
+                    <div id="thank-you-message" style="display: none;">
+                        <h3 class="text-center">Thank you for your donation!</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- View Donation Requests Section -->
-    <section>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <h2 class="text-center mb-4">View Donation Requests</h2>
-                    <div id="donationRequests"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Donation Requests Data (Example) -->
+    <!-- Donation Information Script -->
     <script>
-        // Example data for donation requests
-        var donationRequestsData = [
-            { id: 1, category: "Blood donations", description: "Blood bags needed", quantity: 10 },
-            { id: 2, category: "Medication and medical supplies", description: "Painkillers needed", quantity: 20 },
-            { id: 3, category: "Food and groceries", description: "Non-perishable food items needed", quantity: 30 },
-            { id: 4, category: "Pro-bono doctor visits/ appointments", description: "Free health check-ups needed", quantity: 5 },
-            { id: 5, category: "School books", description: "Textbooks needed for students", quantity: 15 },
-          { id: 6, category: "School supplies", description: "Stationery items needed for classrooms", quantity: 25 },
-          { id: 7, category: "Pro-bono teaching", description: "Volunteers needed to teach underprivileged children", quantity: 10 },
-          { id: 8, category: "Apartments/ living quarters (free or low rent)", description: "Low-cost housing units needed for homeless", quantity: 8 },
-          { id: 9, category: "Clothes, shoes, bags, etc..", description: "Clothing items needed for families in need", quantity: 50 },
-          { id: 10, category: "Kitchen supplies", description: "Cookware and utensils needed for community kitchen", quantity: 20 },
-          { id: 11, category: "Food and groceries (includes fresh food)", description: "Fresh produce needed for food bank", quantity: 40 },
-          { id: 12, category: "Electrical appliances", description: "Household appliances needed for low-income families", quantity: 12 },
-          { id: 13, category: "Toys", description: "Toys needed for children's shelter", quantity: 30 },
-          { id: 14, category: "Luxury foods (cakes, sweets, etc..)", description: "Special treats needed for charity event", quantity: 18 }
+        // JavaScript code to handle visibility of extra filters based on the selected category
+        document.getElementById('categorySelect').addEventListener('change', function () {
+            var selectedCategory = this.value;
 
-        ];
-
-        // Function to display donation requests
-        function displayDonationRequests() {
-            var donationRequestsHtml = "";
-            donationRequestsData.forEach(function (request) {
-                donationRequestsHtml += `
-                  <div class="card mb-3">
-                      <div class="card-body">
-                          <h5 class="card-title">${request.category}</h5>
-                          <p class="card-text">Description: ${request.description}</p>
-                          <p class="card-text">Quantity: ${request.quantity}</p>
-                          <div class="form-group">
-                              <label for="donateQuantity">Enter Quantity to Donate:</label>
-                              <input type="number" class="form-control" id="donateQuantity_${request.id}" min="1" max="${request.quantity}">
-                          </div>
-                          <button class="btn btn-primary btn-donate" onclick="donate(${request.id})">Donate</button>
-                      </div>
-                  </div>
-              `;
-            });
-            document.getElementById("donationRequests").innerHTML = donationRequestsHtml;
-        }
-
-        // Function to handle donation
-        function donate(requestId) {
-            var donateQuantity = parseInt(document.getElementById("donateQuantity_" + requestId).value);
-            if (donateQuantity && donateQuantity > 0) {
-                var index = donationRequestsData.findIndex(function (request) {
-                    return request.id === requestId;
-                });
-                if (index !== -1) {
-                    if (donateQuantity >= donationRequestsData[index].quantity) {
-                        donationRequestsData.splice(index, 1);
-                    } else {
-                        donationRequestsData[index].quantity -= donateQuantity;
-                    }
-                    displayDonationRequests();
-                    alert("Thank you for your donation!");
-                }
-            } else {
-                alert("Please enter a valid quantity to donate.");
+            // Hide all extra filters
+            var extraFilters = document.getElementsByClassName('extra-filter');
+            for (var i = 0; i < extraFilters.length; i++) {
+                extraFilters[i].style.display = 'none';
             }
-        }
 
-        // Function to filter donation requests by category
-        function filterRequests() {
-            var category = document.getElementById("categoryFilter").value;
-            var filteredRequests = donationRequestsData.filter(function (request) {
-                return category === "all" || request.category === category;
+            // Show extra filters based on the selected category
+            switch (selectedCategory) {
+                case 'Clothes':
+                    document.getElementById('clothesFilters').style.display = 'block';
+                    break;
+                case 'Toys':
+                    document.getElementById('toysFilters').style.display = 'block';
+                    break;
+                case 'Food':
+                    document.getElementById('foodFilters').style.display = 'block';
+                    break;
+                case 'Medical Supplies':
+                    document.getElementById('MedicalSuppliesFilters').style.display = 'block';
+                    break;
+                case 'School Supplies':
+                    document.getElementById('SchoolSuppliesFilters').style.display = 'block';
+                    break;
+                default:
+                    // No extra filters for other categories
+                    break;
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('donate-button').addEventListener('click', function () {
+                // Remove the donation post
+                document.getElementById('donation-container').innerHTML = '';
+                // Log a message to console
+                console.log('Donation made!');
             });
-            displayFilteredRequests(filteredRequests);
-        }
-
-        // Function to display filtered donation requests
-        function displayFilteredRequests(filteredRequests) {
-            var donationRequestsHtml = "";
-            filteredRequests.forEach(function (request) {
-                donationRequestsHtml += `
-                  <div class="card mb-3">
-                      <div class="card-body">
-                          <h5 class="card-title">${request.category}</h5>
-                          <p class="card-text">Description: ${request.description}</p>
-                          <p class="card-text">Quantity: ${request.quantity}</p>
-                          <div class="form-group">
-                              <label for="donateQuantity">Enter Quantity to Donate:</label>
-                              <input type="number" class="form-control" id="donateQuantity_${request.id}" min="1" max="${request.quantity}">
-                          </div>
-                          <button class="btn btn-primary btn-donate" onclick="donate(${request.id})">Donate</button>
-                      </div>
-                  </div>
-              `;
-            });
-            document.getElementById("donationRequests").innerHTML = donationRequestsHtml;
-        }
-
-        // Display donation requests when the page loads
-        window.onload = function () {
-            displayDonationRequests();
-        };
+        });
     </script>
 
     <!-- JavaScript libraries -->
