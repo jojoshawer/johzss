@@ -90,6 +90,11 @@
             background-color: #0056b3;
         }
 
+        /* Extra Filters */
+        .extra-filter {
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -153,6 +158,111 @@
                             <option value="Blood Donations">Blood Donations</option>
                         </select>
                     </div>
+                    <!-- Extra Filters -->
+                    <div id="extraFilters">
+                        <!-- Filters for Clothes -->
+                        <div id="clothesFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="clothes-age">Age</label>
+                                <select class="form-control" id="clothes-age" name="clothes-age">
+                                    <option value="All">All</option>
+                                  <option value="Child">Child</option>
+                                  <option value="Teen">Teen</option>
+                                  <option value="Adult">Adult</option>
+                                </select>
+                              </div>
+                            <div class="form-group">
+                                <label for="toysGender">Gender:</label>
+                                <select class="form-control" id="toysGender">
+                                    <option value="All">All</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Unisex">Unisex</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="clothes-season">Season</label>
+                                <select class="form-control" id="clothes-season" name="clothes-season">
+                                  <option value="">Select Season</option>
+                                  <option value="Spring">Spring</option>
+                                  <option value="Summer">Summer</option>
+                                  <option value="Autumn">Autumn</option>
+                                  <option value="Winter">Winter</option>
+                                </select>
+                              </div>
+                        </div>
+                        <!-- Filters for Toys -->
+                        <div id="toysFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="toysAge">Age:</label>
+                                <select class="form-control" id="toysAge">
+                                    <option value="All">All</option>
+                                    <option value="Infant">Infant</option>
+                                    <option value="Toddler">Toddler</option>
+                                    <option value="Pre School">Pre School</option>
+                                    <option value="School Age">School Age</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="toysGender">Gender:</label>
+                                <select class="form-control" id="toysGender">
+                                    <option value="All">All</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Unisex">Unisex</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-category">Category</label>
+                                <select class="form-control" id="toys-category" name="toys-category">
+                                  <option value="All">All</option>
+                                  <option value="Board Games">Board Games</option>
+                                  <option value="Stuffed Toys">Stuffed Toys</option>
+                                  <option value="Dolls">Dolls</option>
+                                  <option value="Sports">Sports</option>
+                                  <option value="Cars">Cars</option>
+                                  <option value="Outdoor">Outdoor</option>
+                                </select>
+                              </div>
+                        </div>
+                        <!-- Filters for Food -->
+                        <div id="foodFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="Type">Type:</label>
+                                <select class="form-control" id="foodUse">
+                                    <option value="All">All</option>
+                                    <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                                    <option value="Canned Foods">Canned Foods</option>
+                                    <option value="Fresh Meals">Fresh Meals</option>
+                                    <option value="Baked">Baked</option>
+                                </select>
+                            </div>
+                        </div>
+                    <!-- Filters for Medical Supplies -->
+                    <div id="MedicalSuppliesFilters" class="extra-filter">
+                        <div class="form-group">
+                            <label for="medical-use">Use</label>
+                            <select class="form-control" id="medical-use" name="medical-use">
+                              <option value="All">All</option>
+                              <option value="First Aid">First Aid</option>
+                              <option value="Surgery">Surgery</option>
+                              <option value="Diagnostics">Diagnostics</option>
+                              <option value="Therapeutics">Therapeutics</option>
+                            </select>
+                          </div>
+                    </div>
+                    <!-- Filters for School Supplies -->
+                    <div id="SchoolSuppliesFilters" class="extra-filter">
+                        <div class="form-group">
+                            <label for="school-supplies-type">Type</label>
+                            <select class="form-control" id="school-supplies-type" name="school-supplies-type">
+                              <option value="All">All</option>
+                              <option value="Stationary">Stationary</option>
+                              <option value="Books">Books</option>
+                            </select>
+                          </div>
+                    </div>
+                    </div>
                     <!-- Donation Details Container -->
                     <div id="donation-container">
                         <!-- Donation Post -->
@@ -179,129 +289,47 @@
 
     <!-- Donation Information Script -->
     <script>
-        var storedFormData = localStorage.getItem('formData');
-
-        if (storedFormData) {
-            var formData = JSON.parse(storedFormData);
-            displayDonation(formData);
-        }
-
-        function displayDonation(formData) {
-            var donationDetails = document.createElement('div');
-            donationDetails.classList.add('donation-details');
-
-            switch (formData.itemCategory) {
-                case 'Clothes':
-                    donationDetails.innerHTML = `
-                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
-                        <p><span>Type of Clothing:</span> ${formData.clothesType}</p>
-                        <p><span>Age:</span> ${formData.clothesAge}</p>
-                        <p><span>Gender:</span> ${formData.clothesGender}</p>
-                        <p><span>Season:</span> ${formData.clothesSeason}</p>
-                        <p><span>Material:</span> ${formData.clothesMaterial}</p>
-                        <p><span>Quantity:</span> ${formData.clothesQuantity}</p>
-                        <div class="form-group">
-                            <label for="clothesQuantity">Quantity to donate:</label>
-                            <input type="number" class="form-control" id="clothesQuantity" name="clothesQuantity" min="1">
-                        </div>
-                    `;
-                    break;
-                case 'School Supplies':
-                    donationDetails.innerHTML = `
-                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
-                        <p><span>Type:</span> ${formData.schoolSuppliesType}</p>
-                        <p><span>Additional Fields:</span> ${formData.additionalFields}</p>
-                        <p><span>Quantity:</span> ${formData.schoolSuppliesQuantity}</p>
-                        <div class="form-group">
-                            <label for="schoolSuppliesQuantity">Quantity to donate:</label>
-                            <input type="number" class="form-control" id="schoolSuppliesQuantity" name="schoolSuppliesQuantity" min="1">
-                        </div>
-                    `;
-                    break;
-                case 'Toys':
-                    donationDetails.innerHTML = `
-                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
-                        <p><span>Age:</span> ${formData.toysAge}</p>
-                        <p><span>Gender:</span> ${formData.toysGender}</p>
-                        <p><span>Category:</span> ${formData.toysCategory}</p>
-                        <p><span>Quantity:</span> ${formData.toysQuantity}</p>
-                        <div class="form-group">
-                            <label for="toysQuantity">Quantity to donate:</label>
-                            <input type="number" class="form-control" id="toysQuantity" name="toysQuantity" min="1">
-                        </div>
-                    `;
-                    break;
-                case 'Food':
-                    donationDetails.innerHTML = `
-                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
-                        <p><span>Type:</span> ${formData.foodType}</p>
-                        <p><span>Item Name:</span> ${formData.foodName}</p>
-                        <p><span>Quantity:</span> ${formData.foodQuantity} kg</p>
-                        <div class="form-group">
-                            <label for="foodQuantity">Quantity (kg) to donate:</label>
-                            <input type="number" class="form-control" id="foodQuantity" name="foodQuantity" min="0" step="0.1" required>
-                        </div>
-                    `;
-                    break;
-                case 'Medical Supplies':
-                    donationDetails.innerHTML = `
-                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
-                        <p><span>Device Type:</span> ${formData.medicalDeviceType}</p>
-                        <p><span>Use:</span> ${formData.medicalUse}</p>
-                        <p><span>Quantity:</span> ${formData.medicalQuantity}</p>
-                        <div class="form-group">
-                            <label for="medicalQuantity">Quantity to donate:</label>
-                            <input type="number" class="form-control" id="medicalQuantity" name="medicalQuantity" min="1">
-                        </div>
-                    `;
-                    break;
-                case 'Blood Donations':
-                    donationDetails.innerHTML = `
-                        <p><span>Item Category:</span> ${formData.itemCategory}</p>
-                        <p><span>Hospital Name:</span> ${formData.hospitalName}</p>
-                        <p><span>Governorate:</span> ${formData.hospitalGovernorate}</p>
-                        <p><span>Area:</span> ${formData.hospitalArea}</p>
-                        <p><span>Donor Name:</span> ${formData.donorName}</p>
-                        <p><span>Blood Type:</span> ${formData.bloodType}</p>
-                        <p><span>Quantity:</span> ${formData.bloodQuantity}</p>
-                    `;
-                    break;
-                default:
-                    donationDetails.innerHTML = `
-                        <p><span>Item Category:</span> Unknown</p>
-                    `;
-            }
-
-            document.getElementById('donation-details-content').appendChild(donationDetails);
-        }
-
-        // Event listener for category selection change
+        // JavaScript code to handle visibility of extra filters based on the selected category
         document.getElementById('categorySelect').addEventListener('change', function () {
             var selectedCategory = this.value;
-            var storedFormData = localStorage.getItem('formData');
 
-            if (storedFormData) {
-                var formData = JSON.parse(storedFormData);
+            // Hide all extra filters
+            var extraFilters = document.getElementsByClassName('extra-filter');
+            for (var i = 0; i < extraFilters.length; i++) {
+                extraFilters[i].style.display = 'none';
+            }
 
-                // Clear existing donation details
-                document.getElementById('donation-details-content').innerHTML = '';
-
-                // Display donation details based on the selected category
-                if (selectedCategory === 'All' || selectedCategory === formData.itemCategory) {
-                    displayDonation(formData);
-                }
+            // Show extra filters based on the selected category
+            switch (selectedCategory) {
+                case 'Clothes':
+                    document.getElementById('clothesFilters').style.display = 'block';
+                    break;
+                case 'Toys':
+                    document.getElementById('toysFilters').style.display = 'block';
+                    break;
+                case 'Food':
+                    document.getElementById('foodFilters').style.display = 'block';
+                    break;
+                case 'Medical Supplies':
+                    document.getElementById('MedicalSuppliesFilters').style.display = 'block';
+                    break;
+                case 'School Supplies':
+                    document.getElementById('SchoolSuppliesFilters').style.display = 'block';
+                    break;
+                default:
+                    // No extra filters for other categories
+                    break;
             }
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('donate-button').addEventListener('click', function () {
-        // Remove the donation post
-        document.getElementById('donation-container').innerHTML = '';
-        // Log a message to console
-        console.log('Donation made!');
-    });
-});
-        
+            document.getElementById('donate-button').addEventListener('click', function () {
+                // Remove the donation post
+                document.getElementById('donation-container').innerHTML = '';
+                // Log a message to console
+                console.log('Donation made!');
+            });
+        });
     </script>
 
     <!-- JavaScript libraries -->
