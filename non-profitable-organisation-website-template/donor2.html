@@ -139,6 +139,29 @@
         </div>
     </section>
 
+    <!-- Teaching Posts Section -->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center mb-4">Teaching Posts</h2>
+                    <!-- List of Teaching Posts -->
+                    <div id="teaching-posts">
+                        <!-- Teaching posts will be displayed here -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Teaching Post 1</h5>
+                                <p class="card-text">Description of Teaching Post 1</p>
+                                <!-- Add button to choose to fulfill the teaching post -->
+                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('Teaching Post 1')">Fulfill</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Donation Details Section -->
     <section>
         <div class="container">
@@ -286,6 +309,39 @@
             </div>
         </div>
     </section>
+    
+    <!-- Teaching Post Details Modal -->
+    <div class="modal fade" id="teachingPostDetailsModal" tabindex="-1" role="dialog" aria-labelledby="teachingPostDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teachingPostDetailsModalLabel">Teaching Post Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="teachingPostDetailsContent">
+                    <!-- Teaching post details will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Medical Cases Section -->
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="text-center mb-4">Medical Cases</h2>
+                <!-- List of Medical Cases -->
+                <div id="medical-cases">
+                    <!-- Medical cases will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
     <!-- Donation Information Script -->
     <script>
@@ -322,21 +378,129 @@
             }
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('donate-button').addEventListener('click', function () {
-                // Remove the donation post
-                document.getElementById('donation-container').innerHTML = '';
-                // Log a message to console
-                console.log('Donation made!');
-            });
+        // Function to fetch teaching posts data
+        function fetchTeachingPosts() {
+            // Here you would make an API call or retrieve the data from your backend
+            // For demonstration purposes, I'll simulate fetching data
+            var teachingPostsData = [
+                { title: "Teaching Post 1", description: "Description of Teaching Post 1", students: 20, address: "123 Makram Ebeid St", subjects: ["Math", "Science"] },
+                { title: "Teaching Post 2", description: "Description of Teaching Post 2", students: 15, address: "456 Misr El Gedida St", subjects: ["English", "History"] },
+                { title: "Teaching Post 3", description: "Description of Teaching Post 3", students: 25, address: "789 Tagamoo St", subjects: ["Art", "Music"] }
+            ];
+
+            // Populate teaching posts
+            populateTeachingPosts(teachingPostsData);
+        }
+
+        // Function to populate teaching posts
+function populateTeachingPosts(posts) {
+    var teachingPostsContainer = document.getElementById("teaching-posts");
+
+    // Clear previous content
+    teachingPostsContainer.innerHTML = "";
+
+    // Loop through teaching posts data and create HTML for each post
+    posts.forEach(function(post) {
+        var postHtml = `
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${post.title}</h5>
+                    <p class="card-text">${post.description}</p>
+                    <button class="btn btn-primary btn-view-details" data-toggle="modal" data-target="#teachingPostDetailsModal" data-title="${post.title}" data-description="${post.description}" data-students="${post.students}" data-address="${post.address}" data-subjects="${post.subjects}">View Details</button>
+                    <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('${post.title}')">Fulfill</button>
+                </div>
+            </div>
+        `;
+        // Append the HTML to the container
+        teachingPostsContainer.innerHTML += postHtml;
+    });
+
+    // Attach event listeners for the fulfillment buttons
+    attachFulfillmentButtonListeners();
+}
+
+// Function to attach event listeners for the fulfillment buttons
+function attachFulfillmentButtonListeners() {
+    // Event listener for the "Fulfill" button
+    document.querySelectorAll('.btn-fulfill').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Get the title of the teaching post associated with this button
+            var postTitle = this.closest('.card').querySelector('.card-title').textContent;
+            // Call the fulfillTeachingPost function with the postTitle
+            fulfillTeachingPost(postTitle);
         });
+    });
+}
+
+
+        // Call the function to fetch and populate teaching posts
+        fetchTeachingPosts();
+
+        // Function to display teaching post details
+    function showTeachingPostDetails(title, description) {
+        // Construct HTML for teaching post details
+        var detailsHtml = `
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${title}</h5>
+                    <p class="card-text">${description}</p>
+                    <!-- Add more details such as number of students, address, subjects, etc. -->
+                </div>
+            </div>
+        `;
+
+        // Display teaching post details
+        document.getElementById("teaching-post-details").innerHTML = detailsHtml;
+        document.getElementById("teaching-post-details").style.display = "block";
+    }
+
+    // Event listener to show teaching post details when a post is clicked
+    document.getElementById("teaching-posts").addEventListener("click", function(event) {
+        var selectedPost = event.target.closest(".card");
+        if (selectedPost) {
+            var postTitle = selectedPost.querySelector(".card-title").textContent;
+            var postDescription = selectedPost.querySelector(".card-text").textContent;
+            // Show teaching post details
+            showTeachingPostDetails(postTitle, postDescription);
+        }
+    });
+    // Event listener to populate teaching post details modal
+    $('#teachingPostDetailsModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var title = button.data('title');
+            var description = button.data('description');
+            var students = button.data('students');
+            var address = button.data('address');
+            var subjects = button.data('subjects');
+
+            var modal = $(this);
+            modal.find('.modal-title').text(title);
+            var detailsHtml = `
+                <p>${description}</p>
+                <p><strong>Number of Students:</strong> ${students}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Subjects:</strong> ${subjects.join(', ')}</p>
+            `;
+            modal.find('.modal-body').html(detailsHtml);
+        });
+    
+    // Event listener for the donate button
+    document.getElementById('donate-button').addEventListener('click', function () {
+            // Remove the donation post
+            document.getElementById('donation-container').innerHTML = '';
+            // Display thank you message
+            document.getElementById('thank-you-message').style.display = 'block';
+            // Log a message to console
+            console.log('Donation made!');
+        });
+        
     </script>
 
     <!-- JavaScript libraries -->
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/script.js"></script>
-</body>
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/script.js"></script>
 
+</body>
 </html>
