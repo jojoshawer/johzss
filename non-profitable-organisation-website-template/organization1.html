@@ -35,6 +35,74 @@
 
 <body>
 
+    <!-- Notification Modal -->
+    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Notifications</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> Requests fulfilled by a donor</p>
+                    <!-- Example posts of requests fulfilled by a donor -->
+                    <div class="donation-details">
+                        <p><span>Item Category:</span> Clothes</p>
+                        <p><span>Type of Clothing:</span> T-Shirt</p>
+                        <p><span>Age:</span> Adult</p>
+                        <p><span>Gender:</span> Male</p>
+                        <p><span>Season:</span> Summer</p>
+                        <p><span>Material:</span> Cotton</p>
+                        <p><span>Quantity:</span> 5</p>
+                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                        
+                    </div>
+                    <div class="donation-details">
+                        <p><span>Item Category:</span> School Supplies</p>
+                        <p><span>Type:</span> Notebook</p>
+                        <p><span>Additional Fields:</span> Wide Ruled</p>
+                        <p><span>Quantity:</span> 20</p>
+                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                    </div>
+                    <div class="donation-details">
+                        <p><span>Item Category:</span> Toys</p>
+                        <p><span>Age:</span> 5-8 years</p>
+                        <p><span>Gender:</span> Any</p>
+                        <p><span>Category:</span> Puzzle</p>
+                        <p><span>Quantity:</span> 10</p>
+                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                    </div>
+                    <div class="donation-details">
+                        <p><span>Item Category:</span> Food</p>
+                        <p><span>Type:</span> Canned Goods</p>
+                        <p><span>Item Name:</span> Beans</p>
+                        <p><span>Quantity:</span> 30 kg</p>
+                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                    </div>
+                    <div class="donation-details">
+                        <p><span>Item Category:</span> Medical Supplies</p>
+                        <p><span>Device Type:</span> Thermometer</p>
+                        <p><span>Use:</span> Diagnostics</p>
+                        <p><span>Quantity:</span> 10</p>
+                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                    </div>
+                    <div class="donation-details">
+                        <p><span>Item Category:</span> Blood Donations</p>
+                        <p><span>Hospital Name:</span> Red Cross Hospital</p>
+                        <p><span>Governorate:</span> New York</p>
+                        <p><span>Area:</span> Manhattan</p>
+                        <p><span>Donor Name:</span> John Doe</p>
+                        <p><span>Blood Type:</span> O+</p>
+                        <p><span>Quantity:</span> 1 unit</p>
+                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ======================header started====================== -->
 
     <header>
@@ -49,13 +117,18 @@
                         <div class="menu-items">
                             <div class="menu">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="organization.html">organization</a></li>
-                                    <li><a href="donor.html">donor</a></li>
-                                    <li><a href="admin.html">admin</a></li>
+                                    <li><a href="organization.html">Organization</a></li>
+                                    <li><a href="donor.html">Donor</a></li>
+                                    <li><a href="admin.html">Admin</a></li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <!-- Notification Button -->
+                    <div class="col-2 text-right">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificationModal">
+                            Notifications
+                        </button>
                     </div>
                 </div>
             </div>
@@ -68,12 +141,13 @@
                 <div class="col-12">
                     <div class="_head_01">
                         <h2>Organization</h2>
-                        <p>Home<i class="fas fa-angle-right"></i><span>Organization</span></p>
+                        <p>Home <i class="fas fa-angle-right"></i> <span><a href="organization.html">Organization registration</a></span> <i class="fas fa-angle-right"></i> <span><a href="organization1.html">Organization page</a></span></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
 
     <!-- ====================== donor1 Section started====================== -->
     <div class="container">
@@ -81,8 +155,8 @@
             <div class="col-md-6">
                 <a href="organization2.html" class="btn btn-secondary btn-block">Create Donation Request</a>
             </div>
-            <div class="col-md-6 mt-4 mt-md-0"> <!-- Added a new column for the button -->
-                <a href="orgfullfilled.html" class="btn btn-primary btn-block">Fulfilled Donations</a>
+            <div class="col-md-6">
+                <a href="zfulfilled.html" class="btn btn-secondary btn-block">Fulfilled Donation Requests</a>
             </div>
         </div>
     </div>
@@ -90,6 +164,61 @@
     <!-- Donation Details Display -->
     <div id="donation-container" class="container">
         <!-- Donation details will be dynamically added here -->
+        <div class="donation-details">
+            <p><span>Item Category:</span> Clothes</p>
+            <p><span>Type of Clothing:</span> T-Shirt</p>
+            <p><span>Age:</span> Adult</p>
+            <p><span>Gender:</span> Male</p>
+            <p><span>Season:</span> Summer</p>
+            <p><span>Material:</span> Cotton</p>
+            <p><span>Quantity:</span> 5</p>
+            <button class="btn btn-primary btn-update" onclick="updateDonation('Clothes')">Update</button>
+            <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+        </div>
+        <div class="donation-details">
+            <p><span>Item Category:</span> School Supplies</p>
+            <p><span>Type:</span> Notebook</p>
+            <p><span>Additional Fields:</span> Wide Ruled</p>
+            <p><span>Quantity:</span> 20</p>
+            <button class="btn btn-primary btn-update" onclick="updateDonation('School Supplies')">Update</button>
+            <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+        </div>
+        <div class="donation-details">
+            <p><span>Item Category:</span> Toys</p>
+            <p><span>Age:</span> 5-8 years</p>
+            <p><span>Gender:</span> Any</p>
+            <p><span>Category:</span> Puzzle</p>
+            <p><span>Quantity:</span> 10</p>
+            <button class="btn btn-primary btn-update" onclick="updateDonation('Toys')">Update</button>
+            <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+        </div>
+        <div class="donation-details">
+            <p><span>Item Category:</span> Food</p>
+            <p><span>Type:</span> Canned Goods</p>
+            <p><span>Item Name:</span> Beans</p>
+            <p><span>Quantity:</span> 30 kg</p>
+            <button class="btn btn-primary btn-update" onclick="updateDonation('Food')">Update</button>
+            <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+        </div>
+        <div class="donation-details">
+            <p><span>Item Category:</span> Medical Supplies</p>
+            <p><span>Device Type:</span> Thermometer</p>
+            <p><span>Use:</span> Diagnostics</p>
+            <p><span>Quantity:</span> 10</p>
+            <button class="btn btn-primary btn-update" onclick="updateDonation('Medical Supplies')">Update</button>
+            <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+        </div>
+        <div class="donation-details">
+            <p><span>Item Category:</span> Blood Donations</p>
+            <p><span>Hospital Name:</span> Red Cross Hospital</p>
+            <p><span>Governorate:</span> New York</p>
+            <p><span>Area:</span> Manhattan</p>
+            <p><span>Donor Name:</span> John Doe</p>
+            <p><span>Blood Type:</span> O+</p>
+            <p><span>Quantity:</span> 1 unit</p>
+            <button class="btn btn-primary btn-update" onclick="updateDonation('Blood Donations')">Update</button>
+            <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+        </div>
     </div>
 
     <script>
@@ -169,6 +298,13 @@
                         <p><span>Blood Type:</span> ${formData.bloodType}</p>
                         <p><span>Quantity:</span> ${formData.bloodQuantity}</p>
                         <button class="btn btn-primary btn-update" onclick="updateDonation('Blood Donations')">Update</button>
+                        <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
+                    `;
+                    break;
+                case 'Unknown':
+                    donationDetails.innerHTML = `
+                        <p><span>Item Category:</span> Unknown</p>
+                        <button class="btn btn-primary btn-update" onclick="updateDonation('Unknown')">Update</button>
                         <button class="btn btn-danger" onclick="deleteDonation(this)">Delete</button>
                     `;
                     break;
