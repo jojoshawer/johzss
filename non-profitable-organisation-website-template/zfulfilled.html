@@ -26,7 +26,8 @@
         }
 
         .btn-pick-date,
-        .btn-delete {
+        .btn-delete,
+        .btn-acknowledge {
             margin-right: 5px;
         }
 
@@ -65,8 +66,7 @@
 </head>
 <body>
 
-     <!-- ======================header started====================== -->
-
+  <!-- Header -->
   <header>
     <div class="my-nav">
       <div class="container">
@@ -91,6 +91,7 @@
     </div>
   </header>
 
+  <!-- Section -->
   <section class="bg-02-a">
     <div class="container">
       <div class="row">
@@ -104,113 +105,106 @@
     </div>
   </section>
 
-       <!-- ====================== started====================== -->
-
-    <div class="container">
-        <!-- Donation Posts -->
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="post">
-                    <div class="donation-details">
-                        <p><span>Item Category:</span> School Supplies</p>
-                        <p><span>Type:</span> Notebook</p>
-                        <p><span>Additional Fields:</span> Wide Ruled</p>
-                        <p><span>Quantity:</span> 20</p>
-                        <button class="btn btn-primary btn-pick-date" onclick="openPopup(this)">Pick Date</button>
-                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <div class="donation-details">
-                        <p><span>Item Category:</span> Toys</p>
-                        <p><span>Age:</span> 5-8 years</p>
-                        <p><span>Gender:</span> Any</p>
-                        <p><span>Category:</span> Puzzle</p>
-                        <p><span>Quantity:</span> 10</p>
-                        <button class="btn btn-primary btn-pick-date" onclick="openPopup(this)">Pick Date</button>
-                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <div class="donation-details">
-                        <p><span>Item Category:</span> Food</p>
-                        <p><span>Type:</span> Canned Goods</p>
-                        <p><span>Item Name:</span> Beans</p>
-                        <p><span>Quantity:</span> 30 kg</p>
-                        <button class="btn btn-primary btn-pick-date" onclick="openPopup(this)">Pick Date</button>
-                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <div class="donation-details">
-                        <p><span>Item Category:</span> Medical Supplies</p>
-                        <p><span>Device Type:</span> Thermometer</p>
-                        <p><span>Use:</span> Diagnostics</p>
-                        <p><span>Quantity:</span> 10</p>
-                        <button class="btn btn-primary btn-pick-date" onclick="openPopup(this)">Pick Date</button>
-                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
-                    </div>
-                </div>
-
-                <div class="post">
-                    <div class="donation-details">
-                        <p><span>Item Category:</span> Blood Donations</p>
-                        <p><span>Hospital Name:</span> Red Cross Hospital</p>
-                        <p><span>Governorate:</span> New York</p>
-                        <p><span>Area:</span> Manhattan</p>
-                        <p><span>Donor Name:</span> John Doe</p>
-                        <p><span>Blood Type:</span> O+</p>
-                        <p><span>Quantity:</span> 1 unit</p>
-                        <button class="btn btn-primary btn-pick-date" onclick="openPopup(this)">Pick Date</button>
-                        <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
-                    </div>
-                </div>
-            </div>
+  <!-- Donation Posts -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="post">
+          <div class="donation-details">
+            <p><span>Item Category:</span> School Supplies</p>
+            <p><span>Type:</span> Notebook</p>
+            <p><span>Additional Fields:</span> Wide Ruled</p>
+            <p><span>Quantity:</span> 20</p>
+            <button class="btn btn-primary btn-pick-date" onclick="openPopup(this)">Pick Date</button>
+            <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+            <button class="btn btn-success btn-acknowledge" onclick="openAcknowledgementPopup()">Acknowledge Donor</button>
+          </div>
         </div>
+
+        <!-- Add more donation posts here -->
+
+        <div class="post">
+          <div class="donation-details">
+            <p><span>Item Category:</span> Toys</p>
+            <p><span>Age:</span> 5-8 years</p>
+            <p><span>Gender:</span> Any</p>
+            <p><span>Category:</span> Puzzle</p>
+            <p><span>Quantity:</span> 10</p>
+            <button class="btn btn-primary btn-pick-date" onclick="openPopup(this)">Pick Date</button>
+            <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+            <button class="btn btn-success btn-acknowledge" onclick="openAcknowledgementPopup()">Acknowledge Donor</button>
+          </div>
+        </div>
+
+        <!-- Add more donation posts here -->
+
+      </div>
     </div>
+  </div>
 
-    <!-- Popup for selecting pickup date -->
-    <div class="popup" id="popup">
-        <div class="popup-header">
-            <h4>Pick Convenient Pick Up Time</h4>
-        </div>
-        <div class="popup-body">
-            <input type="date" id="pickup-date" class="pickup-date">
-            <button onclick="closePopup()">Done</button>
-        </div>
+  <!-- Popup for selecting pickup date -->
+  <div class="popup" id="popup">
+    <div class="popup-header">
+      <h4>Pick Convenient Pick Up Time</h4>
     </div>
-    
+    <div class="popup-body">
+      <input type="date" id="pickup-date" class="pickup-date">
+      <button onclick="closePopup()">Done</button>
+    </div>
+  </div>
 
-    <script>
-        var currentButton = null;
+  <!-- Popup for acknowledging donors -->
+  <div class="popup" id="acknowledgement-popup">
+    <div class="popup-header">
+      <h4>Acknowledge Donor Contributions</h4>
+    </div>
+    <div class="popup-body">
+      <textarea id="acknowledgement-message" rows="4" placeholder="Write a heartfelt message to the donor..."></textarea>
+      <button onclick="sendAcknowledgement()">Send</button>
+    </div>
+  </div>
 
-        function openPopup(button) {
-            currentButton = button;
-            document.getElementById("popup").style.display = "block";
-        }
+  <script>
+    var currentButton = null;
 
-        function closePopup() {
-            var pickupDate = document.getElementById("pickup-date").value;
-            var pickupDateNode = document.createElement("p");
-            pickupDateNode.textContent = "Pick Up Date: " + pickupDate;
-            currentButton.parentNode.insertBefore(pickupDateNode, currentButton.nextSibling);
-            currentButton.remove();
-            document.getElementById("popup").style.display = "none";
-        }
+    function openPopup(button) {
+      currentButton = button;
+      document.getElementById("popup").style.display = "block";
+    }
 
-        function deleteDonation(button) {
-            var confirmDelete = confirm("Are you sure you want to delete this donation?");
-            if (confirmDelete) {
-                var donationDetails = button.parentNode;
-                // Remove the donation details section from the container
-                donationDetails.parentNode.removeChild(donationDetails);
-                // Clear the stored form data
-                localStorage.removeItem('formData');
-            }
-        }
-    </script>
+    function closePopup() {
+      var pickupDate = document.getElementById("pickup-date").value;
+      var pickupDateNode = document.createElement("p");
+      pickupDateNode.textContent = "Pick Up Date: " + pickupDate;
+      currentButton.parentNode.insertBefore(pickupDateNode, currentButton.nextSibling);
+      currentButton.remove();
+      var acknowledgementMessage = document.getElementById("acknowledgement-message").value;
+      currentButton.parentNode.insertAdjacentHTML("beforeend", '<p><strong>Acknowledgement:</strong> ' + acknowledgementMessage + '</p>');
+      document.getElementById("popup").style.display = "none"; // Hide the popup
+    }
+
+    function deleteDonation(button) {
+      var confirmDelete = confirm("Are you sure you want to delete this donation?");
+      if (confirmDelete) {
+        var donationDetails = button.parentNode;
+        // Remove the donation details section from the container
+        donationDetails.parentNode.removeChild(donationDetails);
+        // Clear the stored form data
+        localStorage.removeItem('formData');
+      }
+    }
+
+    function openAcknowledgementPopup() {
+      document.getElementById("acknowledgement-popup").style.display = "block";
+    }
+
+    function sendAcknowledgement() {
+      var acknowledgementMessage = document.getElementById("acknowledgement-message").value;
+      currentButton.parentNode.insertAdjacentHTML("beforeend", '<p><strong>Acknowledgement:</strong> ' + acknowledgementMessage + '</p>');
+      console.log("Message successfully sent to donor."); // Console message
+      document.getElementById("acknowledgement-popup").style.display = "none"; // Hide the popup
+    }
+
+  </script>
 </body>
 </html>
