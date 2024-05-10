@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Additional styles for the sidebar */
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+        }
+
+        .change-password-btn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        /* Additional styles for the lists */
+        .list-section {
+            margin-top: 50px;
+        }
+
+        .list-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        /* Styles for the map */
+        .map-container {
+            height: 200px;
+            width: 100%;
+        }
+
+        /* Style for the delete button */
+        .delete-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======================header started====================== -->
+    <header>
+        <div class="my-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="login.html" class="btn btn-primary mt-4">Back to Login Page</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="nav-items">
+                        <div class="menu-toggle"></div>
+                        <div class="logo">
+                            <img src="assets/images/logo.png">
+                        </div>
+                        <div class="menu-items">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="organization.html">Organization</a></li>
+                                    <li><a href="donor.html">Donor</a></li>
+                                    <li><a href="admin.html">Admin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-02-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="_head_01">
+                        <h2>Admin Dashboard</h2>
+                        <p>Home<i class="fas fa-angle-right"></i><span>Admin</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== Organizations List Section started====================== -->
+    <div class="container list-section">
+        <h1>Organizations List</h1>
+        <!-- Add search and filter input fields -->
+        <div class="form-group">
+            <input type="text" class="form-control" id="searchOrganization" placeholder="Search by Organization Name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="filterArea" placeholder="Filter by Area">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="filterGovernorate" placeholder="Filter by Governorate">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="filterType" placeholder="Filter by Organization Type">
+        </div>
+        <div id="organizationsList">
+            <!-- Organizations list will be displayed here -->
+        </div>
+    </div>
+
+    <!-- JavaScript to display and search organizations list -->
+    <script>
+        function displayOrganizationsList() {
+            // Example data
+            var organizations = [
+                { name: "Organization A", type: "Type A", area: "Area A", governorate: "Governorate 1" },
+                { name: "Organization B", type: "Type B", area: "Area B", governorate: "Governorate 2" },
+                { name: "Organization C", type: "Type C", area: "Area A", governorate: "Governorate 2" },
+                // Add more organizations as needed
+            ];
+
+            // Clear previous data
+            document.getElementById('organizationsList').innerHTML = '';
+
+            // Display organizations list
+            organizations.forEach(function (org) {
+                var orgItem = document.createElement('div');
+                orgItem.classList.add('list-item');
+                orgItem.innerHTML = '<h3>' + org.name + '</h3><p>Type: ' + org.type + '</p><p>Area: ' + org.area + '</p><p>Governorate: ' + org.governorate + '</p>' +
+                    '<button class="delete-button" onclick="deleteOrganization(\'' + org.name + '\')">Delete</button>'; // Delete button with blue color
+                document.getElementById('organizationsList').appendChild(orgItem);
+            });
+        }
+
+        // Call the function to display organizations list when the page loads
+        displayOrganizationsList();
+
+        // Search functionality
+        document.getElementById('searchOrganization').addEventListener('input', function () {
+            var searchQuery = this.value.toLowerCase();
+            var orgItems = document.querySelectorAll('#organizationsList .list-item');
+
+            orgItems.forEach(function (item) {
+                var orgName = item.querySelector('h3').innerText.toLowerCase();
+                if (orgName.includes(searchQuery)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Filter functionality
+        document.getElementById('filterArea').addEventListener('input', filterOrganizations);
+        document.getElementById('filterGovernorate').addEventListener('input', filterOrganizations);
+        document.getElementById('filterType').addEventListener('input', filterOrganizations);
+
+        function filterOrganizations() {
+            var areaFilter = document.getElementById('filterArea').value.toLowerCase();
+            var governorateFilter = document.getElementById('filterGovernorate').value.toLowerCase();
+            var typeFilter = document.getElementById('filterType').value.toLowerCase();
+
+            var orgItems = document.querySelectorAll('#organizationsList .list-item');
+
+            orgItems.forEach(function (item) {
+                var area = item.querySelector('p:nth-of-type(2)').innerText.toLowerCase();
+                var governorate = item.querySelector('p:nth-of-type(3)').innerText.toLowerCase();
+                var type = item.querySelector('p:nth-of-type(4)').innerText.toLowerCase();
+
+                if ((area.includes(areaFilter) || areaFilter === '') &&
+                    (governorate.includes(governorateFilter) || governorateFilter === '') &&
+                    (type.includes(typeFilter) || typeFilter === '')) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Function to delete organization
+        function deleteOrganization(orgName) {
+            // Add your delete logic here, for example:
+            if (confirm("Are you sure you want to delete the organization " + orgName + "?")) {
+                // Code to delete organization goes here
+                // For demonstration, let's just remove the item from the list
+                var orgItem = document.querySelector('#organizationsList .list-item h3');
+                if (orgItem && orgItem.innerText === orgName) {
+                    orgItem.parentElement.remove();
+                }
+            }
+        }
+    </script>
+
+    <!-- ====================== Organization Details Section started====================== -->
+    <div class="container list-section">
+        <h1>Organization Details</h1>
+        <div id="organizationDetails">
+            <!-- Organization details will be displayed here -->
+        </div>
+    </div>
+
+    <!-- JavaScript to fetch and display organization details -->
+    <script>
+        // Assuming organization details are fetched from a server
+        function fetchOrganizationDetails() {
+            // Example data
+            var organizations = [
+                { 
+                    name: "Organization A", 
+                    type: "Type A", 
+                    area: "Area A", 
+                    governorate: "Governorate 1", 
+                    contact: "Contact A",
+                    address: "Address A",
+                    // Replace the location with Google Maps iframe
+                    location: '<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Cairo+Egypt+GUC"" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+                },
+                { 
+                    name: "Organization B", 
+                    type: "Type B", 
+                    area: "Area B", 
+                    governorate: "Governorate 2", 
+                    contact: "Contact B",
+                    address: "Address B",
+                    // Replace the location with Google Maps iframe
+                    location: '<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Cairo+Egypt+GUC"" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+                },
+                { 
+                    name: "Organization C", 
+                    type: "Type C", 
+                    area: "Area A", 
+                    governorate: "Governorate 2", 
+                    contact: "Contact C",
+                    address: "Address C",
+                    // Replace the location with Google Maps iframe
+                    location: '<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Cairo+Egypt+GUC"" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+                },
+                // Add more organizations as needed
+            ];
+
+            // Clear previous data
+            document.getElementById('organizationDetails').innerHTML = '';
+
+            // Display organization details
+            organizations.forEach(function (org) {
+                var orgDetails = document.createElement('div');
+                orgDetails.classList.add('list-item');
+                orgDetails.innerHTML = '<h3>' + org.name + '</h3>' +
+                    '<p>Type: ' + org.type + '</p>' +
+                    '<p>Area: ' + org.area + '</p>' +
+                    '<p>Governorate: ' + org.governorate + '</p>' +
+                    '<p>Contact: ' + org.contact + '</p>' +
+                    '<p>Address: ' + org.address + '</p>' +
+                    org.location; // Google Maps iframe
+                document.getElementById('organizationDetails').appendChild(orgDetails);
+            });
+        }
+
+        // Call the function to fetch and display organization details when the page loads
+        fetchOrganizationDetails();
+    </script>
+
+     <!-- ====================== Review Organization Submissions Section started====================== -->
+     <div class="container list-section">
+        <h1>Review Organization Submissions</h1>
+        <div id="organizationSubmissions">
+            <!-- Organization submissions will be displayed here -->
+            <p>No submissions available</p>
+        </div>
+    </div>
+
+    <!-- JavaScript to fetch and display organization submissions -->
+    <script>
+        // Assuming organization submissions are fetched from a server
+        function fetchOrganizationSubmissions() {
+            // Example data
+            var submissions = [
+                { name: "Organization X", email: "orgx@example.com", status: "Pending" },
+                { name: "Organization Y", email: "orgy@example.com", status: "Accepted" },
+                { name: "Organization Z", email: "orgz@example.com", status: "Rejected" },
+                
+                // Add more submissions as needed
+            ];
+
+            // Clear previous data
+            document.getElementById('organizationSubmissions').innerHTML = '';
+
+            // Display organization submissions
+            submissions.forEach(function (submission) {
+                var submissionItem = document.createElement('div');
+                submissionItem.classList.add('list-item');
+                submissionItem.innerHTML = '<h3>' + submission.name + '</h3><p>Email: ' + submission.email + '</p><p>Status: ' + submission.status + '</p>';
+                document.getElementById('organizationSubmissions').appendChild(submissionItem);
+            });
+        }
+
+        // Call the function to fetch and display organization submissions when the page loads
+        fetchOrganizationSubmissions();
+    </script>
+ <!-- ====================== Manage Organization Requests Section started====================== -->
+<div class="container list-section">
+    <h1>Manage Organization Requests</h1>
+    <div id="organizationRequests">
+        <!-- Organization requests will be displayed here -->
+        <!-- Add accept and reject buttons inside this div -->
+        <!-- The buttons should be added within the loop that iterates through organization requests -->
+        <!-- Example code for one organization request -->
+        <div class="list-item">
+            <h3>Organization X</h3>
+            <p>Email: orgx@example.com</p>
+            <p>Status: Pending</p>
+            <!-- Add Accept and Reject buttons here -->
+            <button class="accept-button" onclick="acceptOrganization('Organization X')">Accept</button>
+            <button class="reject-button" onclick="rejectOrganization('Organization X')">Reject</button>
+        </div>
+        <!-- Add more list items for other organization requests as needed -->
+    </div>
+</div>
+
+<!-- JavaScript to fetch and display organization requests -->
+<script>
+    // Assuming organization requests are fetched from a server
+    function fetchOrganizationRequests() {
+        // Example data
+        var requests = [
+            { name: "Organization W", email: "orgw@example.com", status: "Pending" },
+            { name: "Organization X", email: "orgx@example.com", status: "Accepted" },
+            { name: "Organization Y", email: "orgy@example.com", status: "Rejected" },
+            // Add more requests as needed
+        ];
+
+        // Clear previous data
+        document.getElementById('organizationRequests').innerHTML = '';
+
+        // Display organization requests
+        requests.forEach(function (request) {
+            var requestItem = document.createElement('div');
+            requestItem.classList.add('list-item');
+            requestItem.innerHTML = '<h3>' + request.name + '</h3><p>Email: ' + request.email + '</p><p>Status: ' + request.status + '</p>' +
+                '<button class="accept-button" onclick="acceptOrganization(\'' + request.name + '\')">Accept</button>' +
+                '<button class="reject-button" onclick="rejectOrganization(\'' + request.name + '\')">Reject</button>';
+            document.getElementById('organizationRequests').appendChild(requestItem);
+        });
+    }
+
+    // Call the function to fetch and display organization requests when the page loads
+    fetchOrganizationRequests();
+
+    // Function to accept organization
+    function acceptOrganization(orgName) {
+        // Add your accept logic here, for example:
+        console.log("Accepted: " + orgName);
+    }
+
+    // Function to reject organization
+    function rejectOrganization(orgName) {
+        // Add your reject logic here, for example:
+        console.log("Rejected: " + orgName);
+    }
+</script>
+
+<style>
+/* Additional styles for accept and reject buttons */
+.accept-button,
+.reject-button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.accept-button {
+    background-color: green;
+    color: white;
+}
+
+.reject-button {
+    background-color: red;
+    color: white;
+}
+</style>
