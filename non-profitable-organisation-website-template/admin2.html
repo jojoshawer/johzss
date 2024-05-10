@@ -118,7 +118,12 @@
                 </div>
             </div>
         </div>
+
     </section>
+ <!-- ====================== change_password Requests Section started====================== -->
+ <div class="change-password-btn">
+    <button type="button" class="btn btn-primary" onclick="redirectToPage()">Change Password</button>
+</div>
 
     <div class="container list-section">
         <h1>Choose What You Want to Manage</h1>
@@ -137,6 +142,10 @@
         function redirectTo(page) {
             window.location.href = page;
         }
+        function redirectToPage() {
+    // Redirect to the desired page
+    window.location.href = "adminchangepassword.html";
+}
     </script>
 
 </body>
