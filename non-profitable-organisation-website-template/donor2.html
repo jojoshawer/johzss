@@ -148,12 +148,70 @@
                     <!-- List of Teaching Posts -->
                     <div id="teaching-posts">
                         <!-- Teaching posts will be displayed here -->
+                        <!-- First Example Post -->
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Teaching Post 1</h5>
-                                <p class="card-text">Description of Teaching Post 1</p>
+                                <h5 class="card-title">First Example Post</h5>
+                                <p class="card-text">
+                                    First Name: John<br>
+                                    Last Name: Doe<br>
+                                    Gender: Male<br>
+                                    Email: john.doe@example.com<br>
+                                    Contact Number: 1234567890<br>
+                                    Organization Name: Charity Foundation<br>
+                                    Organization Type: Non-Profit<br>
+                                    Address: 123 Main Street<br>
+                                    Area: Downtown<br>
+                                    Governorate: New York<br>
+                                    Password: password123<br>
+                                    Confirm Password: password123
+                                </p>
                                 <!-- Add button to choose to fulfill the teaching post -->
-                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('Teaching Post 1')">Fulfill</button>
+                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('First Example Post')">Fulfill</button>
+                            </div>
+                        </div>
+                        <!-- Second Example Post -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Second Example Post</h5>
+                                <p class="card-text">
+                                    First Name: Jane<br>
+                                    Last Name: Smith<br>
+                                    Gender: Female<br>
+                                    Email: jane.smith@example.com<br>
+                                    Contact Number: 9876543210<br>
+                                    Organization Name: Volunteer Group<br>
+                                    Organization Type: Non-Profit<br>
+                                    Address: 456 Oak Avenue<br>
+                                    Area: Westside<br>
+                                    Governorate: California<br>
+                                    Password: volunteer2024<br>
+                                    Confirm Password: volunteer2024
+                                </p>
+                                <!-- Add button to choose to fulfill the teaching post -->
+                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('Second Example Post')">Fulfill</button>
+                            </div>
+                        </div>
+                        <!-- Third Example Post -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Third Example Post</h5>
+                                <p class="card-text">
+                                    First Name: Alex<br>
+                                    Last Name: Johnson<br>
+                                    Gender: Other<br>
+                                    Email: alex.johnson@example.com<br>
+                                    Contact Number: 5551234567<br>
+                                    Organization Name: Community Services<br>
+                                    Organization Type: Government<br>
+                                    Address: 789 Elm Street<br>
+                                    Area: East End<br>
+                                    Governorate: Texas<br>
+                                    Password: community123<br>
+                                    Confirm Password: community123
+                                </p>
+                                <!-- Add button to choose to fulfill the teaching post -->
+                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('Third Example Post')">Fulfill</button>
                             </div>
                         </div>
                     </div>
@@ -163,344 +221,14 @@
     </section>
 
     <!-- Donation Details Section -->
-    <section>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <h2 class="text-center mb-4">Donation Details</h2>
-                    <!-- Category Select Dropdown -->
-                    <div class="form-group">
-                        <label for="categorySelect">Select Category:</label>
-                        <select class="form-control" id="categorySelect">
-                            <option value="All">All</option>
-                            <option value="Clothes">Clothes</option>
-                            <option value="Toys">Toys</option>
-                            <option value="Food">Food</option>
-                            <option value="Medical Supplies">Medical Supplies</option>
-                            <option value="School Supplies">School Supplies</option>
-                            <option value="Blood Donations">Blood Donations</option>
-                        </select>
-                    </div>
-                    <!-- Extra Filters -->
-                    <div id="extraFilters">
-                        <!-- Filters for Clothes -->
-                        <div id="clothesFilters" class="extra-filter">
-                            <div class="form-group">
-                                <label for="clothes-age">Age</label>
-                                <select class="form-control" id="clothes-age" name="clothes-age">
-                                    <option value="All">All</option>
-                                  <option value="Child">Child</option>
-                                  <option value="Teen">Teen</option>
-                                  <option value="Adult">Adult</option>
-                                </select>
-                              </div>
-                            <div class="form-group">
-                                <label for="toysGender">Gender:</label>
-                                <select class="form-control" id="toysGender">
-                                    <option value="All">All</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Unisex">Unisex</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="clothes-season">Season</label>
-                                <select class="form-control" id="clothes-season" name="clothes-season">
-                                  <option value="">Select Season</option>
-                                  <option value="Spring">Spring</option>
-                                  <option value="Summer">Summer</option>
-                                  <option value="Autumn">Autumn</option>
-                                  <option value="Winter">Winter</option>
-                                </select>
-                              </div>
-                        </div>
-                        <!-- Filters for Toys -->
-                        <div id="toysFilters" class="extra-filter">
-                            <div class="form-group">
-                                <label for="toysAge">Age:</label>
-                                <select class="form-control" id="toysAge">
-                                    <option value="All">All</option>
-                                    <option value="Infant">Infant</option>
-                                    <option value="Toddler">Toddler</option>
-                                    <option value="Pre School">Pre School</option>
-                                    <option value="School Age">School Age</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="toysGender">Gender:</label>
-                                <select class="form-control" id="toysGender">
-                                    <option value="All">All</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Unisex">Unisex</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="toys-category">Category</label>
-                                <select class="form-control" id="toys-category" name="toys-category">
-                                  <option value="All">All</option>
-                                  <option value="Board Games">Board Games</option>
-                                  <option value="Stuffed Toys">Stuffed Toys</option>
-                                  <option value="Dolls">Dolls</option>
-                                  <option value="Sports">Sports</option>
-                                  <option value="Cars">Cars</option>
-                                  <option value="Outdoor">Outdoor</option>
-                                </select>
-                              </div>
-                        </div>
-                        <!-- Filters for Food -->
-                        <div id="foodFilters" class="extra-filter">
-                            <div class="form-group">
-                                <label for="Type">Type:</label>
-                                <select class="form-control" id="foodUse">
-                                    <option value="All">All</option>
-                                    <option value="Fruits and Vegetables">Fruits and Vegetables</option>
-                                    <option value="Canned Foods">Canned Foods</option>
-                                    <option value="Fresh Meals">Fresh Meals</option>
-                                    <option value="Baked">Baked</option>
-                                </select>
-                            </div>
-                        </div>
-                    <!-- Filters for Medical Supplies -->
-                    <div id="MedicalSuppliesFilters" class="extra-filter">
-                        <div class="form-group">
-                            <label for="medical-use">Use</label>
-                            <select class="form-control" id="medical-use" name="medical-use">
-                              <option value="All">All</option>
-                              <option value="First Aid">First Aid</option>
-                              <option value="Surgery">Surgery</option>
-                              <option value="Diagnostics">Diagnostics</option>
-                              <option value="Therapeutics">Therapeutics</option>
-                            </select>
-                          </div>
-                    </div>
-                    <!-- Filters for School Supplies -->
-                    <div id="SchoolSuppliesFilters" class="extra-filter">
-                        <div class="form-group">
-                            <label for="school-supplies-type">Type</label>
-                            <select class="form-control" id="school-supplies-type" name="school-supplies-type">
-                              <option value="All">All</option>
-                              <option value="Stationary">Stationary</option>
-                              <option value="Books">Books</option>
-                            </select>
-                          </div>
-                    </div>
-                    </div>
-                    <!-- Donation Details Container -->
-                    <div id="donation-container">
-                        <!-- Donation Post -->
-                        <div class="card">
-                            <div class="card-body">
-                                <!-- Donation Details Content -->
-                                <h5 class="card-title">Donation Details</h5>
-                                <div id="donation-details-content">
-                                    <!-- Donation details will be displayed here -->
-                                </div>
-                                <!-- Donate Button -->
-                                <button type="button" class="btn btn-primary btn-donate" id="donate-button">Donate</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Thank you message -->
-                    <div id="thank-you-message" style="display: none;">
-                        <h3 class="text-center">Thank you for your donation!</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Teaching Post Details Modal -->
-    <div class="modal fade" id="teachingPostDetailsModal" tabindex="-1" role="dialog" aria-labelledby="teachingPostDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="teachingPostDetailsModalLabel">Teaching Post Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="teachingPostDetailsContent">
-                    <!-- Teaching post details will be displayed here -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Medical Cases Section -->
-<section>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h2 class="text-center mb-4">Medical Cases</h2>
-                <!-- List of Medical Cases -->
-                <div id="medical-cases">
-                    <!-- Medical cases will be displayed here -->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-    <!-- Donation Information Script -->
-    <script>
-        // JavaScript code to handle visibility of extra filters based on the selected category
-        document.getElementById('categorySelect').addEventListener('change', function () {
-            var selectedCategory = this.value;
-
-            // Hide all extra filters
-            var extraFilters = document.getElementsByClassName('extra-filter');
-            for (var i = 0; i < extraFilters.length; i++) {
-                extraFilters[i].style.display = 'none';
-            }
-
-            // Show extra filters based on the selected category
-            switch (selectedCategory) {
-                case 'Clothes':
-                    document.getElementById('clothesFilters').style.display = 'block';
-                    break;
-                case 'Toys':
-                    document.getElementById('toysFilters').style.display = 'block';
-                    break;
-                case 'Food':
-                    document.getElementById('foodFilters').style.display = 'block';
-                    break;
-                case 'Medical Supplies':
-                    document.getElementById('MedicalSuppliesFilters').style.display = 'block';
-                    break;
-                case 'School Supplies':
-                    document.getElementById('SchoolSuppliesFilters').style.display = 'block';
-                    break;
-                default:
-                    // No extra filters for other categories
-                    break;
-            }
-        });
-
-        // Function to fetch teaching posts data
-        function fetchTeachingPosts() {
-            // Here you would make an API call or retrieve the data from your backend
-            // For demonstration purposes, I'll simulate fetching data
-            var teachingPostsData = [
-                { title: "Teaching Post 1", description: "Description of Teaching Post 1", students: 20, address: "123 Makram Ebeid St", subjects: ["Math", "Science"] },
-                { title: "Teaching Post 2", description: "Description of Teaching Post 2", students: 15, address: "456 Misr El Gedida St", subjects: ["English", "History"] },
-                { title: "Teaching Post 3", description: "Description of Teaching Post 3", students: 25, address: "789 Tagamoo St", subjects: ["Art", "Music"] }
-            ];
-
-            // Populate teaching posts
-            populateTeachingPosts(teachingPostsData);
-        }
-
-        // Function to populate teaching posts
-function populateTeachingPosts(posts) {
-    var teachingPostsContainer = document.getElementById("teaching-posts");
-
-    // Clear previous content
-    teachingPostsContainer.innerHTML = "";
-
-    // Loop through teaching posts data and create HTML for each post
-    posts.forEach(function(post) {
-        var postHtml = `
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${post.title}</h5>
-                    <p class="card-text">${post.description}</p>
-                    <button class="btn btn-primary btn-view-details" data-toggle="modal" data-target="#teachingPostDetailsModal" data-title="${post.title}" data-description="${post.description}" data-students="${post.students}" data-address="${post.address}" data-subjects="${post.subjects}">View Details</button>
-                    <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('${post.title}')">Fulfill</button>
-                </div>
-            </div>
-        `;
-        // Append the HTML to the container
-        teachingPostsContainer.innerHTML += postHtml;
-    });
-
-    // Attach event listeners for the fulfillment buttons
-    attachFulfillmentButtonListeners();
-}
-
-// Function to attach event listeners for the fulfillment buttons
-function attachFulfillmentButtonListeners() {
-    // Event listener for the "Fulfill" button
-    document.querySelectorAll('.btn-fulfill').forEach(function(button) {
-        button.addEventListener('click', function() {
-            // Get the title of the teaching post associated with this button
-            var postTitle = this.closest('.card').querySelector('.card-title').textContent;
-            // Call the fulfillTeachingPost function with the postTitle
-            fulfillTeachingPost(postTitle);
-        });
-    });
-}
-
-
-        // Call the function to fetch and populate teaching posts
-        fetchTeachingPosts();
-
-        // Function to display teaching post details
-    function showTeachingPostDetails(title, description) {
-        // Construct HTML for teaching post details
-        var detailsHtml = `
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${title}</h5>
-                    <p class="card-text">${description}</p>
-                    <!-- Add more details such as number of students, address, subjects, etc. -->
-                </div>
-            </div>
-        `;
-
-        // Display teaching post details
-        document.getElementById("teaching-post-details").innerHTML = detailsHtml;
-        document.getElementById("teaching-post-details").style.display = "block";
-    }
-
-    // Event listener to show teaching post details when a post is clicked
-    document.getElementById("teaching-posts").addEventListener("click", function(event) {
-        var selectedPost = event.target.closest(".card");
-        if (selectedPost) {
-            var postTitle = selectedPost.querySelector(".card-title").textContent;
-            var postDescription = selectedPost.querySelector(".card-text").textContent;
-            // Show teaching post details
-            showTeachingPostDetails(postTitle, postDescription);
-        }
-    });
-    // Event listener to populate teaching post details modal
-    $('#teachingPostDetailsModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var title = button.data('title');
-            var description = button.data('description');
-            var students = button.data('students');
-            var address = button.data('address');
-            var subjects = button.data('subjects');
-
-            var modal = $(this);
-            modal.find('.modal-title').text(title);
-            var detailsHtml = `
-                <p>${description}</p>
-                <p><strong>Number of Students:</strong> ${students}</p>
-                <p><strong>Address:</strong> ${address}</p>
-                <p><strong>Subjects:</strong> ${subjects.join(', ')}</p>
-            `;
-            modal.find('.modal-body').html(detailsHtml);
-        });
-    
-    // Event listener for the donate button
-    document.getElementById('donate-button').addEventListener('click', function () {
-            // Remove the donation post
-            document.getElementById('donation-container').innerHTML = '';
-            // Display thank you message
-            document.getElementById('thank-you-message').style.display = 'block';
-            // Log a message to console
-            console.log('Donation made!');
-        });
-        
-    </script>
+    <!-- Rest of your HTML content here -->
 
     <!-- JavaScript libraries -->
-<script src="assets/js/jquery-3.2.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/script.js"></script>
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
 
 </body>
+
 </html>
