@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Additional styles for the sidebar */
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+        }
+
+        .change-password-btn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        /* Additional styles for the lists */
+        .list-section {
+            margin-top: 50px;
+        }
+
+        .list-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        /* Styles for the map */
+        .map-container {
+            height: 200px;
+            width: 100%;
+        }
+
+        /* Style for the delete button */
+        .delete-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======================header started====================== -->
+    <header>
+        <div class="my-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a href="login.html" class="btn btn-primary mt-4">Back to Login Page</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="nav-items">
+                        <div class="menu-toggle"></div>
+                        <div class="logo">
+                            <img src="assets/images/logo.png">
+                        </div>
+                        <div class="menu-items">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="organization.html">Organization</a></li>
+                                    <li><a href="donor.html">Donor</a></li>
+                                    <li><a href="admin.html">Admin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-right">
+                        <a href="admin2.html" class="btn btn-secondary">Back</a>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-02-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="_head_01">
+                        <h2>Admin Dashboard</h2>
+                        <p>Home<i class="fas fa-angle-right"></i><span>Admin</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ====================== Donor Registration Section started====================== -->
+    <div class="container list-section">
+        <h1>Donor Registration</h1>
+        <form id="donorRegistrationForm">
+            <div class="form-group">
+                <label for="donorName">Name</label>
+                <input type="text" class="form-control" id="donorName" name="donorName" required>
+            </div>
+            <div class="form-group">
+                <label for="donorEmail">Email address</label>
+                <input type="email" class="form-control" id="donorEmail" name="donorEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="donorRole">Role</label>
+                <input type="text" class="form-control" id="donorRole" name="donorRole" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/all.min.js"></script>
+</body>
+
+</html>
+    <!-- ====================== Donors List Section started====================== -->
+    <div class="container list-section">
+        <h1>Donors List</h1>
+        <div id="donorsList">
+            <!-- Donors list will be displayed here -->
+        </div>
+    </div>
+
+    <!-- JavaScript to display donors list -->
+    <script>
+        function displayDonorsList() {
+            // Example data
+            var donors = [
+                { name: "Donor A", role: "Doctor" },
+                { name: "Donor B", role: "Teacher" },
+                { name: "Donor C", role: "Regular Donor" },
+                // Add more donors as needed
+            ];
+
+            // Clear previous data
+            document.getElementById('donorsList').innerHTML = '';
+
+            // Display donors list
+            donors.forEach(function (donor) {
+                var donorItem = document.createElement('div');
+                donorItem.classList.add('list-item');
+                donorItem.innerHTML = '<h3>' + donor.name + '</h3><p>Role: ' + donor.role + '</p>' +
+                    '<button class="delete-button" onclick="deleteDonor(\'' + donor.name + '\')">Delete</button>'; // Delete button with blue color
+                document.getElementById('donorsList').appendChild(donorItem);
+            });
+        }
+
+        // Call the function to display donors list when the page loads
+        displayDonorsList();
+        
+        // Function to delete donor
+        function deleteDonor(donorName) {
+            // Add your delete logic here, for example:
+            if (confirm("Are you sure you want to delete the donor " + donorName + "?")) {
+                // Code to delete donor goes here
+                // For demonstration, let's just remove the item from the list
+                var donorItem = document.querySelector('#donorsList .list-item h3');
+                if (donorItem && donorItem.innerText === donorName) {
+                    donorItem.parentElement.remove();
+                }
+            }
+        }
+    </script>
+ <!-- ====================== Review Donor Submissions Section started====================== -->
+ <div class="container list-section">
+    <h1>Review Donor Submissions</h1>
+    <div id="donorSubmissions">
+        <!-- Donor submissions will be displayed here -->
+        <p>No submissions available</p>
+    </div>
+</div>
+
+<!-- JavaScript to fetch and display donor submissions -->
+<script>
+    // Assuming donor submissions are fetched from a server
+    function fetchDonorSubmissions() {
+        // Example data
+        var submissions = [
+            { name: "Donor X", email: "donorx@example.com", role: "Doctor", status: "Pending" },
+            { name: "Donor Y", email: "donory@example.com", role: "Teacher", status: "Accepted" },
+            { name: "Donor Z", email: "donorz@example.com", role: "Regular Donor", status: "Rejected" },
+            // Add more submissions as needed
+        ];
+
+        // Clear previous data
+        document.getElementById('donorSubmissions').innerHTML = '';
+
+        // Display donor submissions
+        submissions.forEach(function (submission) {
+            var submissionItem = document.createElement('div');
+            submissionItem.classList.add('list-item');
+            submissionItem.innerHTML = '<h3>' + submission.name + '</h3><p>Email: ' + submission.email + '</p><p>Role: ' + submission.role + '</p><p>Status: ' + submission.status + '</p>';
+            document.getElementById('donorSubmissions').appendChild(submissionItem);
+        });
+    }
+
+    // Call the function to fetch and display donor submissions when the page loads
+    fetchDonorSubmissions();
+</script>
+<!-- ====================== Manage Donor Requests Section started====================== -->
+<div class="container list-section">
+    <h1>Manage Donor Requests</h1>
+    <div id="donorRequests">
+        <!-- Donor requests will be displayed here -->
+        <!-- Example code for one donor request -->
+        <div class="list-item">
+            <h3>Donor P</h3>
+            <p>Email: donorp@example.com</p>
+            <p>Role: Doctor</p>
+            <p>Status: Pending</p>
+            <!-- Add Accept and Reject buttons here -->
+            <button class="accept-button" onclick="acceptDonor('Donor P')">Accept</button>
+            <button class="reject-button" onclick="rejectDonor('Donor P')">Reject</button>
+        </div>
+        <!-- Add more list items for other donor requests as needed -->
+    </div>
+</div>
+
+<!-- JavaScript to fetch and display donor requests -->
+<script>
+    // Assuming donor requests are fetched from a server
+    function fetchDonorRequests() {
+        // Example data
+        var requests = [
+            { name: "Donor P", email: "donorp@example.com", role: "Doctor", status: "Pending" },
+            { name: "Donor Q", email: "donorq@example.com", role: "Teacher", status: "Accepted" },
+            { name: "Donor R", email: "donorr@example.com", role: "Regular Donor", status: "Rejected" },
+            // Add more requests as needed
+        ];
+
+        // Clear previous data
+        document.getElementById('donorRequests').innerHTML = '';
+
+        // Display donor requests
+        requests.forEach(function (request) {
+            var requestItem = document.createElement('div');
+            requestItem.classList.add('list-item');
+            requestItem.innerHTML = '<h3>' + request.name + '</h3><p>Email: ' + request.email + '</p><p>Role: ' + request.role + '</p><p>Status: ' + request.status + '</p>' +
+                '<button class="accept-button" onclick="acceptDonor(\'' + request.name + '\')">Accept</button>' +
+                '<button class="reject-button" onclick="rejectDonor(\'' + request.name + '\')">Reject</button>';
+            document.getElementById('donorRequests').appendChild(requestItem);
+        });
+    }
+
+    // Call the function to fetch and display donor requests when the page loads
+    fetchDonorRequests();
+
+    // Function to accept donor
+    function acceptDonor(donorName) {
+        // Add your accept logic here, for example:
+        console.log("Accepted: " + donorName);
+    }
+
+    // Function to reject donor
+    function rejectDonor(donorName) {
+        // Add your reject logic here, for example:
+        console.log("Rejected: " + donorName);
+    }
+</script>
+
+<!-- JavaScript -->
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/all.min.js"></script>
+<style>
+    /* Additional styles for accept and reject buttons */
+    .accept-button,
+    .reject-button {
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .accept-button {
+        background-color: green;
+        color: white;
+    }
+
+    .reject-button {
+        background-color: red;
+        color: white;
+    }
+</style>
+</body>
+
+</html>
