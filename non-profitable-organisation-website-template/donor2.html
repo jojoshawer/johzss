@@ -94,12 +94,55 @@
         .extra-filter {
             display: none;
         }
-
     </style>
 </head>
 
 <body>
+    <!-- Notification Modal -->
+    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Notifications</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  driver arrival details
 
+                  <div class="donation-details">
+                    <p><span>driver name:</span> Ahmed</p>
+                    <p><span>Type of vehicle:</span> car</p>
+                    <p><span>Donated item:</span> clothes</p>
+                    <p><span>ETA:</span> 3 days</p>
+                    <p><span>Quantity:</span> 20</p>
+                    <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                </div>
+                    
+                  <div class="donation-details">
+                    <p><span>driver name:</span> sameh</p>
+                    <p><span>Type of vehicle:</span> truck</p>
+                    <p><span>Donated item:</span> Food</p>
+                    <p><span>ETA:</span> 2 days</p>
+                    <p><span>Quantity:</span> 50</p>
+                    <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                </div>
+
+                <div class="donation-details">
+                    <p><span>driver name:</span> Hussein</p>
+                    <p><span>Type of vehicle:</span> motercycle</p>
+                    <p><span>Donated item:</span> Medical supplies</p>
+                    <p><span>ETA:</span> 6 days</p>
+                    <p><span>Quantity:</span> 30</p>
+                    <button class="btn btn-danger btn-delete" onclick="deleteDonation(this)">Delete</button>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Header -->
     <header>
         <div class="my-nav">
@@ -121,6 +164,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- Notification Button -->
+                <div class="col-2 text-right">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#notificationModal">
+                        Notifications
+                    </button>
             </div>
         </div>
     </header>
@@ -149,96 +197,250 @@
             </div>
         </div>
     </div>
+    
 
-    <!-- Teaching Posts Section -->
+    <!-- Donation Details Section -->
     <section>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <h2 class="text-center mb-4">Teaching Posts</h2>
-                    <!-- List of Teaching Posts -->
-                    <div id="teaching-posts">
-                        <!-- Teaching posts will be displayed here -->
-                        <!-- First Example Post -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">First Example Post</h5>
-                                <p class="card-text">
-                                    First Name: John<br>
-                                    Last Name: Doe<br>
-                                    Gender: Male<br>
-                                    Email: john.doe@example.com<br>
-                                    Contact Number: 1234567890<br>
-                                    Organization Name: Charity Foundation<br>
-                                    Organization Type: Non-Profit<br>
-                                    Address: 123 Main Street<br>
-                                    Area: Downtown<br>
-                                    Governorate: New York<br>
-                                    Password: password123<br>
-                                    Confirm Password: password123
-                                </p>
-                                <!-- Add button to choose to fulfill the teaching post -->
-                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('First Example Post')">Fulfill</button>
+                    <h2 class="text-center mb-4">Donation Details</h2>
+                    <!-- Category Select Dropdown -->
+                    <div class="form-group">
+                        <label for="categorySelect">Select Category:</label>
+                        <select class="form-control" id="categorySelect">
+                            <option value="All">All</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Toys">Toys</option>
+                            <option value="Food">Food</option>
+                            <option value="Medical Supplies">Medical Supplies</option>
+                            <option value="School Supplies">School Supplies</option>
+                            <option value="Blood Donations">Blood Donations</option>
+                            <option value="Teaching posts">Teaching Posts</option>
+                            <option value="Medical Cases">Medical Cases</option>
+                        </select>
+                    </div>
+                    <!-- Extra Filters -->
+                    <div id="extraFilters">
+                        <!-- Filters for Clothes -->
+                        <div id="clothesFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="clothes-age">Age</label>
+                                <select class="form-control" id="clothes-age" name="clothes-age">
+                                    <option value="All">All</option>
+                                    <option value="Child">Child</option>
+                                    <option value="Teen">Teen</option>
+                                    <option value="Adult">Adult</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="clothes-season">Season</label>
+                                <select class="form-control" id="clothes-season" name="clothes-season">
+                                    <option value="">Select Season</option>
+                                    <option value="Spring">Spring</option>
+                                    <option value="Summer">Summer</option>
+                                    <option value="Autumn">Autumn</option>
+                                    <option value="Winter">Winter</option>
+                                </select>
                             </div>
                         </div>
-                        <!-- Second Example Post -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Second Example Post</h5>
-                                <p class="card-text">
-                                    First Name: Jane<br>
-                                    Last Name: Smith<br>
-                                    Gender: Female<br>
-                                    Email: jane.smith@example.com<br>
-                                    Contact Number: 9876543210<br>
-                                    Organization Name: Volunteer Group<br>
-                                    Organization Type: Non-Profit<br>
-                                    Address: 456 Oak Avenue<br>
-                                    Area: Westside<br>
-                                    Governorate: California<br>
-                                    Password: volunteer2024<br>
-                                    Confirm Password: volunteer2024
-                                </p>
-                                <!-- Add button to choose to fulfill the teaching post -->
-                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('Second Example Post')">Fulfill</button>
+                        <!-- Filters for Toys -->
+                        <div id="toysFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="toysAge">Age:</label>
+                                <select class="form-control" id="toysAge">
+                                    <option value="All">All</option>
+                                    <option value="Infant">Infant</option>
+                                    <option value="Toddler">Toddler</option>
+                                    <option value="Pre School">Pre School</option>
+                                    <option value="School Age">School Age</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="toys-category">Category</label>
+                                <select class="form-control" id="toys-category" name="toys-category">
+                                    <option value="All">All</option>
+                                    <option value="Board Games">Board Games</option>
+                                    <option value="Stuffed Toys">Stuffed Toys</option>
+                                    <option value="Dolls">Dolls</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Cars">Cars</option>
+                                    <option value="Outdoor">Outdoor</option>
+                                </select>
                             </div>
                         </div>
-                        <!-- Third Example Post -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Third Example Post</h5>
-                                <p class="card-text">
-                                    First Name: Alex<br>
-                                    Last Name: Johnson<br>
-                                    Gender: Other<br>
-                                    Email: alex.johnson@example.com<br>
-                                    Contact Number: 5551234567<br>
-                                    Organization Name: Community Services<br>
-                                    Organization Type: Government<br>
-                                    Address: 789 Elm Street<br>
-                                    Area: East End<br>
-                                    Governorate: Texas<br>
-                                    Password: community123<br>
-                                    Confirm Password: community123
-                                </p>
-                                <!-- Add button to choose to fulfill the teaching post -->
-                                <button class="btn btn-primary btn-fulfill" onclick="fulfillTeachingPost('Third Example Post')">Fulfill</button>
+                        <!-- Filters for Food -->
+                        <div id="foodFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="Type">Type:</label>
+                                <select class="form-control" id="foodUse">
+                                    <option value="All">All</option>
+                                    <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                                    <option value="Canned Foods">Canned Foods</option>
+                                    <option value="Fresh Meals">Fresh Meals</option>
+                                    <option value="Baked">Baked</option>
+                                </select>
                             </div>
                         </div>
+                        <!-- Filters for Medical Supplies -->
+                        <div id="MedicalSuppliesFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="medical-use">Use</label>
+                                <select class="form-control" id="medical-use" name="medical-use">
+                                    <option value="All">All</option>
+                                    <option value="First Aid">First Aid</option>
+                                    <option value="Surgery">Surgery</option>
+                                    <option value="Diagnostics">Diagnostics</option>
+                                    <option value="Therapeutics">Therapeutics</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Filters for School Supplies -->
+                        <div id="SchoolSuppliesFilters" class="extra-filter">
+                            <div class="form-group">
+                                <label for="school-supplies-type">Type</label>
+                                <select class="form-control" id="school-supplies-type" name="school-supplies-type">
+                                    <option value="All">All</option>
+                                    <option value="Stationary">Stationary</option>
+                                    <option value="Books">Books</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Filters for Medical Cases -->
+<div id="medicalCasesFilters" class="extra-filter">
+    <div class="form-group">
+        <label for="medical-specialty">Medical Specialty</label>
+        <select class="form-control" id="medical-specialty" name="medical-specialty">
+            <option value="All">All</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Oncology">Oncology</option>
+            <!-- Add more medical specialties as needed -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="organization-name">Organization Name</label>
+        <input type="text" class="form-control" id="organization-name" name="organization-name">
+    </div>
+    <div class="form-group">
+        <label for="area">Area</label>
+        <input type="text" class="form-control" id="area" name="area">
+    </div>
+    <div class="form-group">
+        <label for="governorate">Governorate</label>
+        <input type="text" class="form-control" id="governorate" name="governorate">
+    </div>
+</div>
+
+                        <!-- Filters for Teaching Posts -->
+                        <div id="teachingPostsFilters" class="extra-filter">
+    <div class="form-group">
+        <label for="teaching-post-subject">Teaching Posts</label>
+        <select class="form-control" id="teaching-post" name="teaching-post">
+            <option value="Teaching Post">Teaching Post</option>
+            <option value="Teaching Post">Teaching Post</option>
+            <option value="Teaching Post">Teaching Post</option>
+            
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+    <!-- Add more filters for teaching posts if needed -->
+</div>
+
+                    <!-- Donation Details Container -->
+                    <div id="donation-container">
+                        <!-- Donation Post -->
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Donation Details Content -->
+                                <h5 class="card-title">Donation Details</h5>
+                                <div id="donation-details-content">
+                                    <!-- Donation details will be displayed here -->
+                                </div>
+                                <!-- Donate Button -->
+                                <button type="button" class="btn btn-primary btn-donate" id="donate-button">Donate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thank you message -->
+                    <div id="thank-you-message" style="display: none;">
+                        <h3 class="text-center">Thank you for your donation!</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Donation Details Section -->
-    <!-- Rest of your HTML content here -->
 
-    <!-- JavaScript libraries -->
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
+    <!-- Donation Information Script -->
+    <script>
+        
+        // JavaScript code to handle visibility of extra filters based on the selected category
+        document.getElementById('categorySelect').addEventListener('change', function () {
+            var selectedCategory = this.value;
+
+            // Hide all extra filters
+            var extraFilters = document.getElementsByClassName('extra-filter');
+            for (var i = 0; i < extraFilters.length; i++) {
+                extraFilters[i].style.display = 'none';
+            }
+
+            // Show extra filters based on the selected category
+            switch (selectedCategory) {
+                case 'Clothes':
+                    document.getElementById('clothesFilters').style.display = 'block';
+                    break;
+                case 'Toys':
+                    document.getElementById('toysFilters').style.display = 'block';
+                    break;
+                case 'Food':
+                    document.getElementById('foodFilters').style.display = 'block';
+                    break;
+                case 'Medical Supplies':
+                    document.getElementById('MedicalSuppliesFilters').style.display = 'block';
+                    break;
+                case 'School Supplies':
+                    document.getElementById('SchoolSuppliesFilters').style.display = 'block';
+                    break;
+                case 'Teaching posts':
+                    document.getElementById('teachingPostsFilters').style.display = 'block'; // Show teaching post filters
+                    document.getElementById('teaching-posts').style.display = 'block'; // Show teaching posts
+                    break;
+                case 'All':
+                    // Show all extra filters
+                    for (var i = 0; i < extraFilters.length; i++) {
+                        extraFilters[i].style.display = 'block';
+                    }
+                    break;
+                default:
+                    break;
+            }
+        });
+
+ // Function to delete donation
+ function deleteDonation(button) {
+            var confirmDelete = confirm("Are you sure you want to delete this donation?");
+            if (confirmDelete) {
+                var donationDetails = button.parentNode;
+                // Remove the donation details section from the container
+                donationDetails.parentNode.removeChild(donationDetails);
+                // Clear the stored form data
+                localStorage.removeItem('formData');
+            }
+        }
+
+        $(document).ready(function(){
+    $('#notificationModal').modal('show');
+  });
+    </script>
+
+    <!-- Bootstrap JS and Font Awesome JS -->
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
