@@ -54,7 +54,148 @@
       </div>
     </div>
   </section>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Custom CSS for Donation Posts -->
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
 
-  
+  <!-- Header -->
+  <header>
+    <!-- Add your header code here -->
+  </header>
+
+  <!-- Section -->
+  <section class="bg-02-a">
+    <!-- Add your section code here -->
+  </section>
+
+<!-- Donation Post -->
+<div class="post">
+    <h2>Donation Details</h2>
+    <div class="post-content">
+        <div class="donation-details">
+            <p><strong>Donor Name:</strong> <span id="donorName">yaseen</span></p>
+            <p><strong>Clinic Address:</strong> <span id="clinicAddress">122 Clinic St, City, State</span></p>
+            <p><strong>Doctor Email:</strong> <span id="doctorEmail">doctor@example.com</span></p>
+            <p><strong>Doctor Contact:</strong> <span id="doctorContact">+01067067494</span></p>
+            <a href="assets/images/med.webp" target="_blank">required documents for verification</a>
+            <!-- Add more details as needed -->
+        </div>
+        <!-- Update Button -->
+        <button class="btn btn-primary btn-update" onclick="updateDonation()">Update</button>
+        <!-- Delete Button -->
+        <button class="btn btn-danger btn-delete" onclick="deleteDonation()">Delete</button>
+    </div>
+</div>
+
+<!-- Update Donation Form (Hidden by Default) -->
+<form id="updateForm" style="display: none;">
+    <h2>Update Donation</h2>
+    <!-- Donation details input fields -->
+    <div class="form-group">
+        <label for="donorNameInput">Donor Name</label>
+        <input type="text" class="form-control" id="donorNameInput">
+    </div>
+    <div class="form-group">
+        <label for="clinicAddressInput">Clinic Address</label>
+        <input type="text" class="form-control" id="clinicAddressInput">
+    </div>
+    <div class="form-group">
+        <label for="doctorEmailInput">Doctor Email</label>
+        <input type="email" class="form-control" id="doctorEmailInput">
+    </div>
+    <div class="form-group">
+        <label for="doctorContactInput">Doctor Contact</label>
+        <input type="text" class="form-control" id="doctorContactInput">
+    </div>
+    <!-- Add more input fields for other donation details -->
+    <!-- Save and Cancel buttons -->
+    <button type="button" class="btn btn-primary" onclick="saveUpdate()">Save</button>
+    <button type="button" class="btn btn-secondary" onclick="cancelUpdate()">Cancel</button>
+</form>
+
+<script>
+    // Function to populate the update form with existing donation details
+    function updateDonation() {
+        // Hide the donation details post
+        var postContent = document.querySelector('.post-content');
+        postContent.style.display = 'none';
+
+        // Show the update form
+        var updateForm = document.getElementById('updateForm');
+        updateForm.style.display = 'block';
+
+        // Get existing donation details
+        var donorName = document.getElementById('donorName').innerText;
+        var clinicAddress = document.getElementById('clinicAddress').innerText;
+        var doctorEmail = document.getElementById('doctorEmail').innerText;
+        var doctorContact = document.getElementById('doctorContact').innerText;
+
+        // Update form fields with existing details
+        document.getElementById('donorNameInput').value = donorName;
+        document.getElementById('clinicAddressInput').value = clinicAddress;
+        document.getElementById('doctorEmailInput').value = doctorEmail;
+        document.getElementById('doctorContactInput').value = doctorContact;
+    }
+
+    // Function to save the updated donation details
+    function saveUpdate() {
+        var updatedDonorName = document.getElementById('donorNameInput').value;
+        var updatedClinicAddress = document.getElementById('clinicAddressInput').value;
+        var updatedDoctorEmail = document.getElementById('doctorEmailInput').value;
+        var updatedDoctorContact = document.getElementById('doctorContactInput').value;
+        
+        // Update the displayed donation details
+        document.getElementById('donorName').innerText = updatedDonorName;
+        document.getElementById('clinicAddress').innerText = updatedClinicAddress;
+        document.getElementById('doctorEmail').innerText = updatedDoctorEmail;
+        document.getElementById('doctorContact').innerText = updatedDoctorContact;
+
+        // After saving, hide the update form and show the donation details post again
+        var updateForm = document.getElementById('updateForm');
+        updateForm.style.display = 'none';
+
+        var postContent = document.querySelector('.post-content');
+        postContent.style.display = 'block';
+    }
+
+    // Function to cancel the update and go back to the donation details
+    function cancelUpdate() {
+        var updateForm = document.getElementById('updateForm');
+        updateForm.style.display = 'none';
+
+        var postContent = document.querySelector('.post-content');
+        postContent.style.display = 'block';
+    }
+
+    // Function to delete the donation
+    function deleteDonation() {
+        var confirmDelete = confirm("Are you sure you want to delete this donation?");
+        if (confirmDelete) {
+            var donationPost = document.querySelector('.post');
+            // Remove the donation post from the container
+            donationPost.parentNode.removeChild(donationPost);
+            // Clear any associated stored data (optional)
+            // You can add code here to remove data from localStorage or sessionStorage
+        }
+    }
+</script>
+
 </body>
 </html>
+
+
+  
+
