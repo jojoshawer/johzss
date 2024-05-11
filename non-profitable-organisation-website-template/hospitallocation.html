@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Custom CSS for Donation Posts -->
+    <style>
+        .post {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .donation-details {
+            margin-bottom: 10px;
+        }
+
+        .donation-details p {
+            margin-bottom: 5px;
+        }
+
+        .btn-pick-date,
+        .btn-delete,
+        .btn-acknowledge {
+            margin-right: 5px;
+        }
+
+        .pickup-date {
+            margin-bottom: 5px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 9999;
+            width: 300px; /* Adjust width as needed */
+        }
+
+        .popup-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .popup-header h4 {
+            margin: 0;
+        }
+
+        .popup-body {
+            text-align: center;
+        }
+
+        /* Styles for acknowledgement popup */
+        .acknowledgement-popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0; /* Change background color */
+            padding: 30px; /* Increase padding */
+            border: 2px solid #007bff; /* Change border */
+            border-radius: 10px; /* Increase border radius */
+            z-index: 9999;
+            width: 400px; /* Adjust width */
+        }
+
+        .acknowledgement-popup .popup-header {
+            border-bottom: 2px solid #007bff; /* Change border color */
+            margin-bottom: 20px; /* Increase margin bottom */
+        }
+
+        .acknowledgement-popup .popup-header h4 {
+            color: #007bff; /* Change text color */
+        }
+
+        .acknowledgement-popup .popup-body {
+            text-align: left; /* Align text to left */
+        }
+
+        .acknowledgement-popup textarea {
+            width: 100%; /* Set textarea width to 100% */
+            resize: none; /* Disable textarea resizing */
+            margin-bottom: 15px; /* Increase margin bottom */
+        }
+
+        .acknowledgement-popup button {
+            background-color: #007bff; /* Change button background color */
+            color: white; /* Change button text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Adjust padding */
+            border-radius: 5px; /* Adjust border radius */
+            cursor: pointer; /* Add pointer cursor */
+            margin-right: 10px; /* Add right margin */
+        }
+
+        .acknowledgement-popup button:hover {
+            background-color: #0056b3; /* Change button background color on hover */
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="my-nav">
+      <div class="container">
+        <div class="row">
+          <div class="nav-items">
+            <div class="menu-toggle"></div>
+            <div class="logo">
+              <img src="assets/images/logo.png">
+            </div>
+            <div class="menu-items">
+              <div class="menu">
+                <ul>
+                  <li><a href="organization.html">organization</a></li>
+                  <li><a href="donor.html">donor</a></li>
+                  <li><a href="admin.html">admin</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Back Button -->
+          <div class="col-2 text-right">
+            <a href="donor2.html" class="btn btn-secondary">Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section -->
+  <section class="bg-02-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="_head_01">
+            <h2>donor</h2>
+            <p>Home<i class="fas fa-angle-right"></i><span><a href="hospitallocation.html">hospital locations</a></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Hospitals List Section -->
+<div class="container list-section">
+    <h1>Hospitals List</h1>
+    <div id="hospitalsList">
+        <!-- Hospitals list will be displayed here -->
+    </div>
+</div>
+
+<!-- JavaScript to display hospitals list -->
+<script>
+    // Sample hospitals data
+    var hospitals = [
+        { 
+            name: "Hospital Nasayem", 
+            type: "Corporate", 
+            area: "Nasr City", 
+            governorate: "Cairo",
+            // Replace the location with Google Maps iframe
+            location: '<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Cairo+Egypt+GUC"" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+        },
+        { 
+            name: "Hospital Gawy", 
+            type: "Non-profit", 
+            area: "New Cairo", 
+            governorate: "Cairo",
+            // Replace the location with Google Maps iframe
+            location: '<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Cairo+Egypt+GUC"" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+        },
+        { 
+            name: "Hospital Madinaty", 
+            type: "Corporate", 
+            area: "Madinaty", 
+            governorate: "Second New Cairo",
+            // Replace the location with Google Maps iframe
+            location: '<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Cairo+Egypt+GUC"" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>'
+        }
+    ];
+
+    // Function to display hospitals list
+    function displayHospitalsList() {
+        var hospitalsList = document.getElementById('hospitalsList');
+        hospitalsList.innerHTML = '';
+
+        hospitals.forEach(function(hospital) {
+            var item = document.createElement('div');
+            item.classList.add('list-item');
+            item.innerHTML = '<h3>' + hospital.name + '</h3>' +
+                             '<p>Type: ' + hospital.type + '</p>' +
+                             '<p>Area: ' + hospital.area + '</p>' +
+                             '<p>Governorate: ' + hospital.governorate + '</p>' +
+                             hospital.location; // Google Maps iframe
+            hospitalsList.appendChild(item);
+        });
+    }
+
+    // Call the function to display hospitals list when the page loads
+    displayHospitalsList();
+</script>
+
+
+
+  
+
+</body>
+</html>
