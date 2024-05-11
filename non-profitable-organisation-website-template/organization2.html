@@ -33,6 +33,11 @@
               </div>
             </div>
           </div>
+           <!-- Back Button -->
+           <div class="col-2 text-right">
+            <a href="organization1.html" class="btn btn-secondary">Back</a>
+          </button>
+        </div>
         </div>
       </div>
     </div>
@@ -69,6 +74,8 @@
                   <option value="Medical Supplies">Medical Supplies</option>
                   <option value="School Supplies">School Supplies</option>
                   <option value="Blood Donations">Blood Donations</option>
+                  <option value="Teaching posts">Teaching Posts</option>
+                  <option value="Medical Cases">Medical Cases</option>
                 </select>
               </div>
               <div class="form-group">
@@ -159,7 +166,7 @@
     </div>
     <div class="form-group">
       <label for="clothes-quantity">Quantity</label>
-      <input type="number" class="form-control" id="clothes-quantity" name="clothes-quantity">
+      <input type="text" class="form-control" id="clothes-quantity" name="clothes-quantity">
     </div>
   `;
   dynamicFieldsContainer.innerHTML = fieldsHTML;
@@ -192,7 +199,7 @@
             </div>
             <div class="form-group">
               <label for="stationary-quantity">Quantity</label>
-              <input type="number" class="form-control" id="stationary-quantity" name="stationary-quantity">
+              <input type="text" class="form-control" id="stationary-quantity" name="stationary-quantity">
             </div>
           `;
         } else if (selectedType === 'Books') {
@@ -223,7 +230,7 @@
             </div>
             <div class="form-group">
               <label for="book-quantity">Quantity</label>
-              <input type="number" class="form-control" id="book-quantity" name="book-quantity">
+              <input type="text" class="form-control" id="book-quantity" name="book-quantity">
             </div>
           `;
         }
@@ -267,7 +274,7 @@
       </div>
       <div class="form-group">
         <label for="toys-quantity">Quantity</label>
-        <input type="number" class="form-control" id="toys-quantity" name="toys-quantity">
+        <input type="text" class="form-control" id="toys-quantity" name="toys-quantity">
       </div>
     `;
     dynamicFieldsContainer.innerHTML = fieldsHTML;
@@ -291,7 +298,7 @@
       </div>
       <div class="form-group">
         <label for="food-quantity">Quantity (in kg)</label>
-        <input type="number" class="form-control" id="food-quantity" name="food-quantity">
+        <input type="text" class="form-control" id="food-quantity" name="food-quantity">
       </div>
     `;
     dynamicFieldsContainer.innerHTML = fieldsHTML;
@@ -319,7 +326,7 @@
       </div>
       <div class="form-group">
         <label for="medical-quantity">Quantity</label>
-        <input type="number" class="form-control" id="medical-quantity" name="medical-quantity">
+        <input type="text" class="form-control" id="medical-quantity" name="medical-quantity">
       </div>
     `;
     dynamicFieldsContainer.innerHTML = fieldsHTML;
@@ -349,7 +356,7 @@
       </div>
       <div class="form-group">
         <label for="blood-quantity">Quantity</label>
-        <input type="number" class="form-control" id="blood-quantity" name="blood-quantity">
+        <input type="text" class="form-control" id="blood-quantity" name="blood-quantity">
       </div>
     `;
     dynamicFieldsContainer.innerHTML = fieldsHTML;
