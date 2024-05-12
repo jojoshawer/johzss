@@ -98,7 +98,7 @@
                 address: "123 Main St",
                 area: "Some Area",
                 governorate: "Some Governorate",
-                picturePath: "assets/images/organization.webp"
+                picturePath: "assets/images/organization.png"
             },
             {
                 firstName: "Jane",
@@ -111,7 +111,7 @@
                 address: "456 Elm St",
                 area: "Another Area",
                 governorate: "Another Governorate",
-                picturePath: "assets/images/organization.webp"
+                picturePath: "assets/images/organization.png"
 
             }
             // Add more organization submissions as needed
@@ -167,7 +167,7 @@
 
          // Function to simulate downloading submission
          function downloadSubmission(index) {
-            var submission = donorSubmissions[index];
+            var submission = organizationSubmissions[index];
             // Redirect to the picture filepath
             window.location.href = submission.picturePath;
         }
