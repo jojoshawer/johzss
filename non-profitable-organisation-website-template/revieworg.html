@@ -97,7 +97,8 @@
                 organizationType: "Non-Profit",
                 address: "123 Main St",
                 area: "Some Area",
-                governorate: "Some Governorate"
+                governorate: "Some Governorate",
+                picturePath: "assets/images/organization.webp"
             },
             {
                 firstName: "Jane",
@@ -109,7 +110,9 @@
                 organizationType: "NGO",
                 address: "456 Elm St",
                 area: "Another Area",
-                governorate: "Another Governorate"
+                governorate: "Another Governorate",
+                picturePath: "assets/images/organization.webp"
+
             }
             // Add more organization submissions as needed
         ];
@@ -162,11 +165,11 @@
             displayOrganizationSubmissions();
         }
 
-        // Function to simulate downloading submission
-        function downloadSubmission(index) {
-            var submission = organizationSubmissions[index];
-            // Implement download logic here
-            alert('Downloading submission: ' + submission.firstName + ' ' + submission.lastName);
+         // Function to simulate downloading submission
+         function downloadSubmission(index) {
+            var submission = donorSubmissions[index];
+            // Redirect to the picture filepath
+            window.location.href = submission.picturePath;
         }
     </script>
 </body>
