@@ -144,27 +144,27 @@
     <!-- JavaScript to display donors list -->
     <script>
         function displayDonorsList() {
-            // Example data
-            var donors = [
-                { name: "Donor A", role: "Doctor" },
-                { name: "Donor B", role: "Teacher" },
-                { name: "Donor C", role: "Regular Donor" },
-                // Add more donors as needed
-            ];
+    // Example data
+    var donors = [
+        { name: "Donor A", role: "Doctor", email: "donor1@example.com" },
+        { name: "Donor B", role: "Teacher", email: "donor2@example.com" },
+        { name: "Donor C", role: "Regular Donor", email: "donor3@example.com" },
+        // Add more donors as needed
+    ];
 
-            // Clear previous data
-            document.getElementById('donorsList').innerHTML = '';
+    // Clear previous data
+    document.getElementById('donorsList').innerHTML = '';
 
-            // Display donors list
-            donors.forEach(function (donor) {
-                var donorItem = document.createElement('div');
-                donorItem.classList.add('list-item');
-                donorItem.innerHTML = '<h3>' + donor.name + '</h3><p>Role: ' + donor.role + '</p>' +
-                    '<button class="delete-button" onclick="deleteDonor(\'' + donor.name + '\')">Delete</button>'; // Delete button with blue color
-                document.getElementById('donorsList').appendChild(donorItem);
-            });
-        }
-
+    // Display donors list
+    donors.forEach(function (donor) {
+        var donorItem = document.createElement('div');
+        donorItem.classList.add('list-item');
+        donorItem.innerHTML = '<h3>' + donor.name + '</h3><p>Role: ' + donor.role + '</p>' +
+            '<p>Email: ' + donor.email + '</p>' +
+            '<button class="delete-button" onclick="deleteDonor(\'' + donor.name + '\')">Delete</button>'; // Delete button with blue color
+        document.getElementById('donorsList').appendChild(donorItem);
+    });
+}
         // Call the function to display donors list when the page loads
         displayDonorsList();
         
@@ -181,61 +181,6 @@
             }
         }
     </script>
- <!-- ====================== Review Donor Submissions Section started====================== -->
- <div class="container list-section">
-    <h1>Review Donor Submissions</h1>
-    <div id="donorSubmissions">
-        <!-- Donor submissions will be displayed here -->
-        <p>No submissions available</p>
-    </div>
-</div>
-
-<!-- JavaScript to fetch and display donor submissions -->
-<script>
-    // Assuming donor submissions are fetched from a server
-    function fetchDonorSubmissions() {
-        // Example data
-        var submissions = [
-            { name: "Donor X", email: "donorx@example.com", role: "Doctor", status: "Pending" },
-            { name: "Donor Y", email: "donory@example.com", role: "Teacher", status: "Accepted" },
-            { name: "Donor Z", email: "donorz@example.com", role: "Regular Donor", status: "Rejected" },
-            // Add more submissions as needed
-        ];
-
-        // Clear previous data
-        document.getElementById('donorSubmissions').innerHTML = '';
-
-        // Display donor submissions
-        submissions.forEach(function (submission) {
-            var submissionItem = document.createElement('div');
-            submissionItem.classList.add('list-item');
-            submissionItem.innerHTML = '<h3>' + submission.name + '</h3><p>Email: ' + submission.email + '</p><p>Role: ' + submission.role + '</p><p>Status: ' + submission.status + '</p>';
-            document.getElementById('donorSubmissions').appendChild(submissionItem);
-        });
-    }
-
-    // Call the function to fetch and display donor submissions when the page loads
-    fetchDonorSubmissions();
-</script>
-<!-- ====================== Manage Donor Requests Section started====================== -->
-<div class="container list-section">
-    <h1>Manage Donor Requests</h1>
-    <div id="donorRequests">
-        <!-- Donor requests will be displayed here -->
-        <!-- Example code for one donor request -->
-        <div class="list-item">
-            <h3>Donor P</h3>
-            <p>Email: donorp@example.com</p>
-            <p>Role: Doctor</p>
-            <p>Status: Pending</p>
-            <!-- Add Accept and Reject buttons here -->
-            <button class="accept-button" onclick="acceptDonor('Donor P')">Accept</button>
-            <button class="reject-button" onclick="rejectDonor('Donor P')">Reject</button>
-        </div>
-        <!-- Add more list items for other donor requests as needed -->
-    </div>
-</div>
-
 <!-- JavaScript to fetch and display donor requests -->
 <script>
     // Assuming donor requests are fetched from a server
